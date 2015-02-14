@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoWeb", "TodoWeb\TodoWeb.csproj", "{CFC35D8E-5127-465D-8879-1FE64B8B8293}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFC35D8E-5127-465D-8879-1FE64B8B8293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFC35D8E-5127-465D-8879-1FE64B8B8293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFC35D8E-5127-465D-8879-1FE64B8B8293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFC35D8E-5127-465D-8879-1FE64B8B8293}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
