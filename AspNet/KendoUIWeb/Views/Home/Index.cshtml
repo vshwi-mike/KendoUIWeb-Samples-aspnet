@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div id="app" class="row">
+    <div class="col-md-8">
+        <h2>DatePicker</h2>
+        <p>
+            <input type="text" data-role="datepicker" data-bind="value: date" />
+        </p>
+    </div>
+    <div class="col-md-8">
+        <h2>ComboBox</h2>
+        <p>
+            <input id="combobox" type="text" 
+                   data-role="combobox"
+                   data-value-field="ProductID"
+                   data-text-field="ProductName"
+                   data-bind="source: dataSource, value: ProductID" />
+        </p>
+    </div>
+    <div class="col-md-12">
+        <h2>Grid</h2>
+        <p>
+            <div id="grid"
+                 data-role="grid"
+                 data-selectable="row"
+                 data-bind="source: dataSource"
+                 data-height="300"
+                 ></div>
+        </p>
+    </div>
+</div>
+
+@section scripts{
+<script>
+
+    //ViewModelを生成。
+    var vm = new kendo.data.ObservableObject({
+        name: "John Doe",
+        date: new Date(),
+        ProductID: 1,
+
+        dataSource : new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: "http://demos.telerik.com/kendo-ui/service/products",
+                    dataType: "jsonp" // "jsonp" is required for cross-domain requests; use "json" for same-domain requests
+                }
+            },
+            schema: {
+                model: { id: "ProductID" }
+            }
+        })
+
+    });
+
+    kendo.bind("#app", vm);         //ViewModelをDOMにひもづける。
+
+    //コンボボックスのリスト部分の幅をセット。
+    $("#combobox").data("kendoComboBox").list.width(400);
+</script>
+}
