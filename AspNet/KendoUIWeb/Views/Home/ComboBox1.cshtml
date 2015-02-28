@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "コンボボックスを使う";
+}
+
+@section scripts {
+    <script src="@Url.Content("~/Scripts/App/Samples/combobox1.js")"></script>
+    <script>
+        App.ViewModel.set("title", "@(ViewBag.Title)");
+    </script>
+}
+
+<style>
+    h2 {
+        margin-bottom: 40px;
+    }
+
+    .well {
+        margin-top:40px;
+    }
+</style>
+
+<div id="app" >
+    <h2 data-bind="text: title"></h2>
+
+    <div class="row">
+        <div class="col-md-2">
+            <label>Date</label>
+            <input type="text" data-role="datepicker" data-bind="value: date" 
+                   style="width: 110px;"/>
+        </div>
+
+        <div class="col-md-4">
+            <label>Customer</label>
+            <input id="combobox" type="text"
+                   data-role="combobox"
+                   data-value-field="CustomerID"
+                   data-text-field="CompanyName"
+                   data-bind="source: dataSource, value: Customer" 
+                   style="width: 300px;"/>
+        </div>
+    </div>
+
+    <div class="well" >
+        <p> <label>Date</label> <span data-bind="text: date"></span> </p>
+        <p> <label>Date (yyyy/MM/dd)</label> <span data-bind="text: getDateStr"></span> </p>
+        <p> <label>Customer ID</label> <span data-bind="text: Customer.CustomerID"></span> </p>
+        <p> <label>Company Name</label> <span data-bind="text: Customer.CompanyName"></span> </p>
+    </div>
+</div>
+
+

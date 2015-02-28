@@ -1,46 +1,77 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Kendo UI Web サンプル集 - 目次";
 }
 
+<style scoped>
+    #app {
+        margin-top: 60px;
+    }
+</style>
+
+<div id="indexview" class="row">
+    <h2 data-bind="text: title"></h2>
+
+    <div id="treeview"
+         data-role="treeview"
+         data-url-field="url"
+         data-bound="indexvm.expandAll"
+         data-bind="source: contents"></div>
+</div>
 
 <div id="app" class="row">
-    <div class="col-md-8">
-        <h2>DatePicker</h2>
-        <p>
-            <input type="text" data-role="datepicker" data-bind="value: date" />
-        </p>
-    </div>
-    <div class="col-md-8">
-        <h2>ComboBox</h2>
-        <p>
-            <input id="combobox" type="text" 
-                   data-role="combobox"
-                   data-value-field="ProductID"
-                   data-text-field="ProductName"
-                   data-bind="source: dataSource, value: ProductID" />
-        </p>
-    </div>
     <div class="col-md-12">
-        <h2>Grid</h2>
-        <p>
-            <div id="grid"
-                 data-role="grid"
-                 data-selectable="row"
-                 data-bind="source: dataSource"
-                 data-height="300"
-                 ></div>
-        </p>
+        <h4>Grid</h4>
+        <div id="grid"
+                data-role="grid"
+                data-selectable="row"
+                data-bind="source: dataSource"
+                data-height="300"
+                ></div>
     </div>
 </div>
 
 @section scripts{
 <script>
+    var indexvm = new kendo.data.ObservableObject({
+        element: "#indexview",
+        title: "@(ViewBag.Title)",
+        contents: [
+            {
+                text: "1. コンボボックス", items: [
+                    { text: "1.1. コンボボックスを使う", url: "@Url.Action("ComboBox1")" },
+                    {
+                        text: "1.2.コンボボックスのカスタマイズ", items: [
+                            { text: "1.2.1. リスト部分の幅を指定する", url: "@Url.Action("ComboBox2_1")" },
+                            { text: "1.2.2. テンプレートを使う", url: "@Url.Action("ComboBox2_2")" }
+                        ]
+                    },
+                    { text: "1.3. コンボボックスのカスケード", url: "@Url.Action("ComboBox3")" }
+                ]
+            },
+            {
+                text: "2. グリッド", items: [
+                    { text: "2.1. グリッドを使う" },
+                    { text: "2.2. 検索条件で絞り込み" },
+                    { text: "2.3. ページネーション" },
+                    { text: "2.4. グリッドのカスタマイズ" }
+                ]
+            }
+        ],
 
-    //ViewModelを生成。
+        expandAll: function (e) {
+            var treeview = e.sender;
+            treeview.expand(".k-item");
+        }
+    });
+
+    kendo.bind(indexvm.element, indexvm);
+</script>
+
+
+
+<script>
     var vm = new kendo.data.ObservableObject({
-        name: "John Doe",
-        date: new Date(),
-        ProductID: 1,
+        element: "#app",
 
         dataSource : new kendo.data.DataSource({
             transport: {
@@ -56,9 +87,6 @@
 
     });
 
-    kendo.bind("#app", vm);         //ViewModelをDOMにひもづける。
-
-    //コンボボックスのリスト部分の幅をセット。
-    $("#combobox").data("kendoComboBox").list.width(400);
+    kendo.bind(vm.element, vm);
 </script>
 }
