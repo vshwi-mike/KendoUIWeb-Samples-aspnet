@@ -1,9 +1,9 @@
 ﻿@{
-    ViewBag.Title = "コンボボックスを使う";
+    ViewBag.Title = "テンプレートを使う";
 }
 
 @section scripts {
-    <script src="@Url.Content("~/Scripts/App/Samples/combobox1.js")"></script>
+    <script src="@Url.Content("~/Scripts/App/Samples/combobox2_2.js")"></script>
 }
 
 <style scoped>
@@ -14,20 +14,29 @@
     .well {
         margin-top:40px;
     }
+
+    dt, dd {
+        float: left;
+    }
 </style>
 
 <div id="app" >
     <h2>@(ViewBag.Title)</h2>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-8">
             <label>Customer</label>
-            <input id="combobox" type="text"
+            <input id="drp_customer" type="text"
                    data-role="combobox"
                    data-value-field="CustomerID"
-                   data-text-field="CompanyName"
+                   data-text-field="CustomerID"
                    data-bind="source: dataSource, value: Customer" 
-                   style="width: 300px;"/>
+                   data-template="tpl_drp_customer"
+                   style="width: 100px;"/>
+
+            <script id="tpl_drp_customer" type="text/x-kendo-tmpl">
+                <dl><dt style="width:80px;">${ data.CustomerID }</dt><dd>${ data.CompanyName }</dd></dl>
+            </script>
         </div>
     </div>
 

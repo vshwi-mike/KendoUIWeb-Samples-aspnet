@@ -24,7 +24,16 @@ namespace KendoUIWeb.Controllers {
         }
 
         /// <summary>
+        /// MVVM、データバインドを使う
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult MVVMDataBind() {
+            return View();
+        }
+
+        /// <summary>
         /// コンボボックスを使う
+        /// リスト部分の幅を指定する
         /// </summary>
         /// <returns></returns>
         public ActionResult ComboBox1() {
@@ -32,18 +41,10 @@ namespace KendoUIWeb.Controllers {
         }
 
         /// <summary>
-        /// リスト部分の幅を指定する
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult ComboBox2_1() {
-            return View();
-        }
-
-        /// <summary>
         /// テンプレートを使う
         /// </summary>
         /// <returns></returns>
-        public ActionResult ComboBox2_2() {
+        public ActionResult ComboBox2_3() {
             return View();
         }
 

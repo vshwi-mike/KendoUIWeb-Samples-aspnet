@@ -20,6 +20,6 @@ namespace NorthwindWeb.Models
         [Column(TypeName = "ntext")]
         public string CustomerDesc { get; set; }
 
-        public virtual ICollection<Customer> Customers { get; set; }
+        public ICollection<Customer> Customers { get; set; }
     }
 }

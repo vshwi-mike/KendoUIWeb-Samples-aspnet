@@ -21,6 +21,6 @@ namespace NorthwindWeb.Models
         [StringLength(50)]
         public string RegionDescription { get; set; }
 
-        public virtual ICollection<Territory> Territories { get; set; }
+        public ICollection<Territory> Territories { get; set; }
     }
 }

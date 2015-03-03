@@ -68,14 +68,16 @@ namespace NorthwindWeb.Models
         public string PhotoPath { get; set; }
 
 
+
+
         [ForeignKey("EmployeeID")]
         public virtual ICollection<Employee> Employees1 { get; set; }
 
         [ForeignKey("ReportsTo")]
-        public virtual Employee Employee1 { get; set; }
+        public Employee Employee1 { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; }
 
-        public virtual ICollection<Territory> Territories { get; set; }
+        public ICollection<Territory> Territories { get; set; }
     }
 }

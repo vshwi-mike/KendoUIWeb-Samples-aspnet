@@ -49,12 +49,12 @@ namespace NorthwindWeb.Models
         [StringLength(15)]
         public string ShipCountry { get; set; }
 
-        public virtual Customer Customer { get; set; }
+        public Customer Customer { get; set; }
 
-        public virtual Employee Employee { get; set; }
+        public Employee Employee { get; set; }
 
-        public virtual ICollection<Order_Detail> Order_Details { get; set; }
+        public ICollection<Order_Detail> Order_Details { get; set; }
 
-        public virtual Shipper Shipper { get; set; }
+        public Shipper Shipper { get; set; }
     }
 }

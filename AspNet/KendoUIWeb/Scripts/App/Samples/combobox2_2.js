@@ -24,6 +24,6 @@
     kendo.bind(vm.element, vm);
 
     //コンボボックスのリスト部分の幅をセット。
-    $(vm.element).find("#combobox").data("kendoComboBox").list.width(400);
+    $(vm.element).find("#drp_customer").data("kendoComboBox").list.width(400);
 })();
 

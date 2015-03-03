@@ -28,11 +28,17 @@ namespace NorthwindWeb.Api
         }
 
         // GET: api/Territories
-        public IEnumerable<TerritoryDTO> GetTerritories()
+        public IEnumerable<TerritoryDTO> GetTerritories(int RegionID = 0)
         {
             var query = db.Territories
                             .Include("Region")
-                            .OrderBy(i => i.TerritoryID);
+                            .AsQueryable();
+
+            if (RegionID != 0) {
+                query = query.Where(i => i.RegionID == RegionID);
+            }
+
+            query = query.OrderBy(i => i.TerritoryID);
             var list = Mapper.Map<List<Territory>, List<TerritoryDTO>>(query.ToList());
             return list;
         }

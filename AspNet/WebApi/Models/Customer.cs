@@ -48,8 +48,8 @@ namespace NorthwindWeb.Models
         [StringLength(24)]
         public string Fax { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; }
 
-       public virtual ICollection<CustomerDemographic> CustomerDemographics { get; set; }
+        public ICollection<CustomerDemographic> CustomerDemographics { get; set; }
     }
 }

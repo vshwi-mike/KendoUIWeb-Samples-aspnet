@@ -22,8 +22,8 @@ namespace NorthwindWeb.Models
 
         public int RegionID { get; set; }
 
-        public virtual Region Region { get; set; }
+        public Region Region { get; set; }
 
-        public virtual ICollection<Employee> Employees { get; set; }
+        public ICollection<Employee> Employees { get; set; }
     }
 }

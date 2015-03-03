@@ -25,6 +25,6 @@ namespace NorthwindWeb.Models
         [Column(TypeName = "image")]
         public byte[] Picture { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

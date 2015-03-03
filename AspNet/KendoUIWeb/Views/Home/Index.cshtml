@@ -36,27 +36,24 @@
         element: "#indexview",
         title: "@(ViewBag.Title)",
         contents: [
+            { text: "1. MVVM、データバインドを使う", url: "@Url.Action("MVVMDataBind")" },
             {
-                text: "1. コンボボックス", items: [
-                    { text: "1.1. コンボボックスを使う", url: "@Url.Action("ComboBox1")" },
-                    {
-                        text: "1.2.コンボボックスのカスタマイズ", items: [
-                            { text: "1.2.1. リスト部分の幅を指定する", url: "@Url.Action("ComboBox2_1")" },
-                            { text: "1.2.2. テンプレートを使う", url: "@Url.Action("ComboBox2_2")" }
-                        ]
-                    },
-                    { text: "1.3. コンボボックスのカスケード", url: "@Url.Action("ComboBox3")" }
+                text: "2. コンボボックス", items: [
+                    { text: "2.1. コンボボックスを使う", url: "@Url.Action("ComboBox1")" },
+                    { text: "2.2. リスト部分の幅を指定する", url: "@Url.Action("ComboBox1")" },
+                    { text: "2.3. テンプレートを使う", url: "@Url.Action("ComboBox2_3")" },
+                    { text: "2.4. コンボボックスのカスケード", url: "@Url.Action("ComboBox3")" }
                 ]
             },
             {
-                text: "2. グリッド", items: [
-                    { text: "2.1. グリッドを使う" },
-                    { text: "2.2. 検索条件で絞り込み" },
-                    { text: "2.3. ページネーション" },
-                    { text: "2.4. グリッドのカスタマイズ" }
+                text: "3. グリッド", items: [
+                    { text: "3.1. グリッドを使う" },
+                    { text: "3.2. 検索条件で絞り込み" },
+                    { text: "3.3. ページネーション" },
+                    { text: "3.4. グリッドのカスタマイズ" }
                 ]
             }
-        ],
+    ],
 
         expandAll: function (e) {
             var treeview = e.sender;

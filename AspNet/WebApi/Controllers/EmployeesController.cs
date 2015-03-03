@@ -25,10 +25,21 @@ namespace NorthwindWeb.Api
         }
 
         // GET: api/Employees
-        public IEnumerable<EmployeeDTO> GetEmployees()
+        public IEnumerable<EmployeeDTO> GetEmployees(int RegionID = 0, string TerritoryID = "")
         {
             var query = db.Employees
-                            .OrderBy(i => i.EmployeeID);
+                            .Include("Territories")
+                            .AsQueryable();
+
+            if (RegionID != 0) {
+                query = query.Where(i => i.Territories.Any(t => t.RegionID == RegionID));
+            }
+
+            if (!string.IsNullOrEmpty(TerritoryID)) {
+                query = query.Where(i => i.Territories.Any(t => t.TerritoryID == TerritoryID));
+            }
+
+            query = query.OrderBy(i => i.EmployeeID);
             var list = Mapper.Map<List<Employee>, List<EmployeeDTO>>(query.ToList());
             return list;
         }

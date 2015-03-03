@@ -22,6 +22,6 @@ namespace NorthwindWeb.Models
         [StringLength(24)]
         public string Phone { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

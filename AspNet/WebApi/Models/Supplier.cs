@@ -49,6 +49,6 @@ namespace NorthwindWeb.Models
         [Column(TypeName = "ntext")]
         public string HomePage { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "MVVM、データバインドを使う";
+}
+
+@section scripts {
+    <script src="@Url.Content("~/Scripts/App/Samples/mvvm_databind.js")"></script>
+    <script>
+        App.ViewModel.set("title", "@(ViewBag.Title)");
+    </script>
+}
+
+<style scoped>
+    h2 {
+        margin-bottom: 40px;
+    }
+
+    .well {
+        margin-top:40px;
+    }
+</style>
+
+<div id="app" >
+    <h2 data-bind="text: title"></h2>
+
+    <div class="row">
+        <div class="col-md-2">
+            <label>Date</label>
+            <input type="text" data-role="datepicker" data-bind="value: date" 
+                   style="width: 110px;"/>
+        </div>
+
+        <div class="col-md-4">
+            <label>Customer</label>
+            <input id="combobox" type="text"
+                   data-role="combobox"
+                   data-value-field="CustomerID"
+                   data-text-field="CompanyName"
+                   data-bind="source: dataSource, value: customer" 
+                   style="width: 300px;"/>
+        </div>
+
+        <div class="col-md-2">
+            <label>Staff Name</label>
+            <input type="text" data-bind="value: staff_name" data-value-update="keyup"
+                   class="k-textbox" style="width: 200px;" />
+        </div>
+
+    </div>
+
+    <div class="well" >
+        <p> <label>Date</label> <span data-bind="text: date"></span> </p>
+        <p> <label>Date (yyyy/MM/dd)</label> <span data-bind="text: getDateStr"></span> </p>
+        <p> <label>Customer ID</label> <span data-bind="text: customer.CustomerID"></span> </p>
+        <p> <label>Company Name</label> <span data-bind="text: customer.CompanyName"></span> </p>
+        <p> <label>Staff Name</label> <span data-bind="text: staff_name"></span> </p>
+        <button class="btn btn-primary" data-bind="events: {click: onShowJSON}">Show JSON</button>
+    </div>
+
+    <div class="well">
+        <a href="http://docs.telerik.com/kendo-ui/framework/mvvm/overview" target="_blank">Kendo UI site...</a>
+    </div>
+</div>
+
+
