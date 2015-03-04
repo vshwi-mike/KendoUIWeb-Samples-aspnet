@@ -1,12 +1,14 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "MVVM、データバインドを使う";
+    var mydate = new DateTime(2015, 7, 12);
 }
 
 @section scripts {
     <script src="@Url.Content("~/Scripts/App/Samples/mvvm_databind.js")"></script>
     <script>
+        //サーバー側の値をクライアント側のJavaScriptで使う例
         App.ViewModel.set("title", "@(ViewBag.Title)");
+        App.ViewModel.set("date", new Date(@mydate.Year, @(mydate.Month-1), @mydate.Day));
     </script>
 }
 

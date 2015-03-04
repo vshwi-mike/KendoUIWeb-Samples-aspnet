@@ -1,15 +1,11 @@
-﻿@{
-    ViewBag.Title = "Kendo UI Web サンプル集 - 目次";
-}
-
-<style scoped>
+﻿<style scoped>
     #app {
         margin-top: 60px;
     }
 </style>
 
 <div id="indexview" class="row">
-    <h2 data-bind="text: title"></h2>
+    <h2>Kendo UI Web サンプル集 - 目次</h2>
 
     <div id="treeview"
          data-role="treeview"
@@ -18,23 +14,10 @@
          data-bind="source: contents"></div>
 </div>
 
-<div id="app" class="row">
-    <div class="col-md-12">
-        <h4>Grid</h4>
-        <div id="grid"
-                data-role="grid"
-                data-selectable="row"
-                data-bind="source: dataSource"
-                data-height="300"
-                ></div>
-    </div>
-</div>
-
 @section scripts{
 <script>
     var indexvm = new kendo.data.ObservableObject({
         element: "#indexview",
-        title: "@(ViewBag.Title)",
         contents: [
             { text: "1. MVVM、データバインドを使う", url: "@Url.Action("MVVMDataBind")" },
             {
@@ -47,7 +30,7 @@
             },
             {
                 text: "3. グリッド", items: [
-                    { text: "3.1. グリッドを使う" },
+                    { text: "3.1. グリッドを使う", url: "@Url.Action("Grid1")" },
                     { text: "3.2. 検索条件で絞り込み" },
                     { text: "3.3. ページネーション" },
                     { text: "3.4. グリッドのカスタマイズ" }
@@ -62,28 +45,5 @@
     });
 
     kendo.bind(indexvm.element, indexvm);
-</script>
-
-
-
-<script>
-    var vm = new kendo.data.ObservableObject({
-        element: "#app",
-
-        dataSource : new kendo.data.DataSource({
-            transport: {
-                read: {
-                    url: "http://demos.telerik.com/kendo-ui/service/products",
-                    dataType: "jsonp" // "jsonp" is required for cross-domain requests; use "json" for same-domain requests
-                }
-            },
-            schema: {
-                model: { id: "ProductID" }
-            }
-        })
-
-    });
-
-    kendo.bind(vm.element, vm);
 </script>
 }

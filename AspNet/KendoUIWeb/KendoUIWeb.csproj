@@ -148,8 +148,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Scripts\App\Samples\combobox2_2.js" />
+    <Content Include="Scripts\App\Samples\combobox2_3.js" />
     <Content Include="Scripts\App\Samples\combobox3.js" />
+    <Content Include="Scripts\App\Samples\grid1.js" />
     <Content Include="Scripts\App\Samples\mvvm_databind.js" />
     <Content Include="Scripts\App\Samples\combobox1.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -186,6 +187,7 @@
     <Content Include="Views\Home\ComboBox2_3.cshtml" />
     <Content Include="Views\Home\ComboBox3.cshtml" />
     <Content Include="Views\Home\MVVMDataBind.cshtml" />
+    <Content Include="Views\Home\Grid1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\App\Models\" />

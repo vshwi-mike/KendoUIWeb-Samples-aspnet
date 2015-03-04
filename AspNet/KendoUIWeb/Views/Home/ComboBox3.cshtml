@@ -1,8 +1,4 @@
-﻿@{
-    ViewBag.Title = "コンボボックスのカスケード";
-}
-
-@section scripts {
+﻿@section scripts {
     <script src="@Url.Content("~/Scripts/App/Samples/combobox3.js")"></script>
 }
 
@@ -11,7 +7,7 @@
         margin-bottom: 40px;
     }
 
-    .well {
+    .div-kendolink {
         margin-top:40px;
     }
 
@@ -21,7 +17,7 @@
 </style>
 
 <div id="app" >
-    <h2>@(ViewBag.Title)</h2>
+    <h2>コンボボックスのカスケード</h2>
 
     <div class="row">
         <div class="col-md-2">
@@ -70,19 +66,20 @@
                 <dl><dt style="width:80px;">${ data.EmployeeID }</dt><dd>${data.FirstName} ${data.LastName}</dd></dl>
             </script>
         </div>
+
+        <div class="well col-md-6" >
+            <p> <label>Region ID</label> <span data-bind="text: region.RegionID"></span> </p>
+            <p> <label>Region Description</label> <span data-bind="text: region.RegionDescription"></span> </p>
+            <p> <label>Territory ID</label> <span data-bind="text: territory.TerritoryID"></span> </p>
+            <p> <label>Territory Description</label> <span data-bind="text: territory.TerritoryDescription"></span> </p>
+            <p> <label>Employee ID</label> <span data-bind="text: employee.EmployeeID"></span> </p>
+            <p> <label>Employee Name</label> <span data-bind="text: getEmployeeName"></span> </p>
+        </div>
     </div>
 
-    <div class="well" >
-        <p> <label>Region ID</label> <span data-bind="text: region.RegionID"></span> </p>
-        <p> <label>Region Description</label> <span data-bind="text: region.RegionDescription"></span> </p>
-        <p> <label>Territory ID</label> <span data-bind="text: territory.TerritoryID"></span> </p>
-        <p> <label>Territory Description</label> <span data-bind="text: territory.TerritoryDescription"></span> </p>
-        <p> <label>Employee ID</label> <span data-bind="text: employee.EmployeeID"></span> </p>
-        <p> <label>Employee Name</label> <span data-bind="text: getEmployeeName"></span> </p>
-    </div>
 
-    <div class="well">
-        <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/combobox" target="_blank">Kendo UI site...</a>
+    <div class="well div-kendolink">
+        <a href="//docs.telerik.com/kendo-ui/api/javascript/ui/combobox#configuration-cascadeFrom" target="_blank">Kendo UI site...</a>
     </div>
 </div>
 

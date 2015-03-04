@@ -1,0 +1,41 @@
+﻿@section scripts {
+    <script src="@Url.Content("~/Scripts/App/Samples/grid1.js")"></script>
+}
+
+<style scoped>
+    h2 {
+        margin-bottom: 40px;
+    }
+
+    .div-kendolink {
+        margin-top:40px;
+    }
+</style>
+
+<div id="app" >
+    <h2>グリッドを使う</h2>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div id="grid"
+                 data-role="grid"
+                 data-selectable="row"
+                 data-resizable="true"
+                 data-sortable="true"
+                 data-bind="source: productList"
+                 data-height="500"
+                 data-columns="[
+                    { field: 'CategoryName', title: 'Category', width: '120px'},
+                    { field: 'ProductName', title: 'Product Name'},
+                    { field: 'SupplierName', title: 'Supplier', width: '300px'},
+                 ]"
+                ></div>
+        </div>
+    </div>
+
+    <div class="well div-kendolink">
+        <a href="//docs.telerik.com/kendo-ui/api/javascript/ui/grid" target="_blank">Kendo UI site...</a>
+    </div>
+</div>
+
+

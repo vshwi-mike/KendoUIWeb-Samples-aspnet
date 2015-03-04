@@ -1,9 +1,5 @@
-﻿@{
-    ViewBag.Title = "テンプレートを使う";
-}
-
-@section scripts {
-    <script src="@Url.Content("~/Scripts/App/Samples/combobox2_2.js")"></script>
+﻿@section scripts {
+    <script src="@Url.Content("~/Scripts/App/Samples/combobox2_3.js")"></script>
 }
 
 <style scoped>
@@ -11,7 +7,7 @@
         margin-bottom: 40px;
     }
 
-    .well {
+    .div-kendolink {
         margin-top:40px;
     }
 
@@ -21,10 +17,10 @@
 </style>
 
 <div id="app" >
-    <h2>@(ViewBag.Title)</h2>
+    <h2>テンプレートを使う</h2>
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-4">
             <label>Customer</label>
             <input id="drp_customer" type="text"
                    data-role="combobox"
@@ -38,15 +34,17 @@
                 <dl><dt style="width:80px;">${ data.CustomerID }</dt><dd>${ data.CompanyName }</dd></dl>
             </script>
         </div>
+
+        <div class="well col-md-4" >
+            <p> <label>Customer ID</label> <span data-bind="text: Customer.CustomerID"></span> </p>
+            <p> <label>Company Name</label> <span data-bind="text: Customer.CompanyName"></span> </p>
+        </div>
+
     </div>
 
-    <div class="well" >
-        <p> <label>Customer ID</label> <span data-bind="text: Customer.CustomerID"></span> </p>
-        <p> <label>Company Name</label> <span data-bind="text: Customer.CompanyName"></span> </p>
-    </div>
 
-    <div class="well">
-        <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/combobox" target="_blank">Kendo UI site...</a>
+    <div class="well div-kendolink">
+        <a href="//docs.telerik.com/kendo-ui/api/javascript/ui/combobox#configuration-template" target="_blank">Kendo UI site...</a>
     </div>
 </div>
 

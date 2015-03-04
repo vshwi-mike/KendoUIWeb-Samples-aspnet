@@ -6,7 +6,7 @@
         element: "#app",
 
         title: "",
-        date: new Date(2015, 5, 21),
+        date: new Date(),
         customer: { CustomerID: "SEVES", CompanyName: "Seven Seas Imports" },
         staff_name: "",
 
