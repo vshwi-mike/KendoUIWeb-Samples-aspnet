@@ -1,21 +1,26 @@
-﻿var vm = new kendo.data.ObservableObject({
-    element: "#app",
+﻿var App = App || {};
 
-    productList: new kendo.data.DataSource({
-        transport: {
-            read: {
-                //url: "http://demos.telerik.com/kendo-ui/service/products",
-                //dataType: "jsonp" // "jsonp" is required for cross-domain requests; use "json" for same-domain requests
+(function () {
+    'option strict';
 
-                url: "http://localhost:50194/api/products", 
-                dataType: "json"
+    var vm;
+    App.ViewModel = vm= new kendo.data.ObservableObject({
+        element: "#app",
+
+        productList: new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: "http://localhost:50194/api/products",
+                    dataType: "json"
+                }
+            },
+            schema: {
+                model: { id: "ProductID" }
             }
-        },
-        schema: {
-            model: { id: "ProductID" }
-        }
-    })
+        })
 
-});
+    });
 
-kendo.bind(vm.element, vm);
+    kendo.bind(vm.element, vm);
+})();
+

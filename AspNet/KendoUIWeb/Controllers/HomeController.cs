@@ -65,7 +65,7 @@ namespace KendoUIWeb.Controllers {
         }
 
         /// <summary>
-        /// 検索条件で絞り込み
+        /// 検索条件で絞り込む
         /// </summary>
         /// <returns></returns>
         public ActionResult Grid2() {

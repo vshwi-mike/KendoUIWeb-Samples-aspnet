@@ -27,7 +27,37 @@ textarea {
 /*****************************************************/
 /* App Styles                                        */
 /*****************************************************/
+.k-list li dl {
+    width: 100%;
+}
+
+.k-list li dt,
+.k-list li dd {
+    float: left;
+}
+
 .body-content {
     max-width:1000px;
 }
+
+.source-js {
+    margin-top:60px;
+}
+
+.source-html {
+    margin-top:12px;
+}
+
+.source-js iframe,
+.source-html iframe {
+    width: 100%;
+    height: 300px;
+    background-color: white;
+    border: none;
+}
+
+.kendolink {
+    margin-top:12px;
+}
+
 

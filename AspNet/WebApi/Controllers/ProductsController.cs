@@ -31,12 +31,33 @@ namespace NorthwindWeb.Api
         }
 
         // GET: api/Products
-        public IEnumerable<ProductDTO> GetProducts()
-        {
+        public IEnumerable<ProductDTO> GetProducts(
+                                        int? category_id = null, 
+                                        int? supplier_id = null, 
+                                        string product_name = "", 
+                                        bool active_only = true ) {
             var query = db.Products
                             .Include("Category")
                             .Include("Supplier")
-                            .OrderBy(i => i.ProductID);
+                            .AsQueryable();
+
+            if ((category_id ?? 0) != 0) {
+                query = query.Where(i => i.CategoryID == category_id);
+            }
+
+            if ((supplier_id ?? 0) != 0) {
+                query = query.Where(i => i.SupplierID == supplier_id);
+            }
+
+            if (!string.IsNullOrEmpty(product_name)) {
+                query = query.Where(i => i.ProductName.Contains(product_name));
+            }
+
+            if (active_only == true) {
+                query = query.Where(i => i.Discontinued == false);
+            }
+
+            query = query.OrderBy(i => i.ProductID);
             var list = Mapper.Map<List<Product>, List<ProductDTO>>(query.ToList());
             return list;
         }

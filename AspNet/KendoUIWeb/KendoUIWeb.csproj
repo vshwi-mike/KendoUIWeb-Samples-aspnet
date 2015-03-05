@@ -111,6 +111,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SourceFileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -150,6 +151,7 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\App\Samples\combobox2_3.js" />
     <Content Include="Scripts\App\Samples\combobox3.js" />
+    <Content Include="Scripts\App\Samples\grid2.js" />
     <Content Include="Scripts\App\Samples\grid1.js" />
     <Content Include="Scripts\App\Samples\mvvm_databind.js" />
     <Content Include="Scripts\App\Samples\combobox1.js" />
@@ -188,13 +190,14 @@
     <Content Include="Views\Home\ComboBox3.cshtml" />
     <Content Include="Views\Home\MVVMDataBind.cshtml" />
     <Content Include="Views\Home\Grid1.cshtml" />
+    <Content Include="Views\Home\Grid2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\App\Models\" />
+    <Folder Include="Views\SourceFile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
