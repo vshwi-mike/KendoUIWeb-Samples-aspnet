@@ -25,8 +25,7 @@ namespace NorthwindWeb.Api
         }
 
         // GET: api/Shippers
-        public IEnumerable<ShipperDTO> GetShippers()
-        {
+        public IEnumerable<ShipperDTO> GetShippers(){
             var query = db.Shippers
                             .OrderBy(i => i.ShipperID);
             var list = Mapper.Map<List<Shipper>, List<ShipperDTO>>(query.ToList());
@@ -35,8 +34,7 @@ namespace NorthwindWeb.Api
 
         // GET: api/Shippers/5
         [ResponseType(typeof(ShipperDTO))]
-        public async Task<IHttpActionResult> GetShipper(int id)
-        {
+        public async Task<IHttpActionResult> GetShipper(int id) {
             Shipper shipper = await db.Shippers.FindAsync(id);
             if (shipper == null) {
                 return NotFound();
@@ -48,32 +46,23 @@ namespace NorthwindWeb.Api
 
         // PUT: api/Shippers/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutShipper(int id, Shipper shipper)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PutShipper(int id, Shipper shipper) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            if (id != shipper.ShipperID)
-            {
+            if (id != shipper.ShipperID) {
                 return BadRequest();
             }
 
             db.Entry(shipper).State = EntityState.Modified;
 
-            try
-            {
+            try {
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ShipperExists(id))
-                {
+            } catch (DbUpdateConcurrencyException) {
+                if (!ShipperExists(id)) {
                     return NotFound();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
@@ -83,10 +72,8 @@ namespace NorthwindWeb.Api
 
         // POST: api/Shippers
         [ResponseType(typeof(Shipper))]
-        public async Task<IHttpActionResult> PostShipper(Shipper shipper)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PostShipper(Shipper shipper) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
@@ -98,11 +85,9 @@ namespace NorthwindWeb.Api
 
         // DELETE: api/Shippers/5
         [ResponseType(typeof(Shipper))]
-        public async Task<IHttpActionResult> DeleteShipper(int id)
-        {
+        public async Task<IHttpActionResult> DeleteShipper(int id) {
             Shipper shipper = await db.Shippers.FindAsync(id);
-            if (shipper == null)
-            {
+            if (shipper == null) {
                 return NotFound();
             }
 
@@ -112,18 +97,15 @@ namespace NorthwindWeb.Api
             return Ok(shipper);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
                 db.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool ShipperExists(int id)
-        {
-            return db.Shippers.Count(e => e.ShipperID == id) > 0;
+        private bool ShipperExists(int id) {
+            return db.Shippers.Any(e => e.ShipperID == id);
         }
     }
 }

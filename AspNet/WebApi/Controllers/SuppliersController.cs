@@ -25,8 +25,7 @@ namespace NorthwindWeb.Api
         }
 
         // GET: api/Suppliers
-        public IEnumerable<SupplierDTO> GetSuppliers()
-        {
+        public IEnumerable<SupplierDTO> GetSuppliers() {
             var query = db.Suppliers
                             .OrderBy(i => i.SupplierID);
             var list = Mapper.Map<List<Supplier>, List<SupplierDTO>>(query.ToList());
@@ -35,8 +34,7 @@ namespace NorthwindWeb.Api
 
         // GET: api/Suppliers/5
         [ResponseType(typeof(SupplierDTO))]
-        public async Task<IHttpActionResult> GetSupplier(int id)
-        {
+        public async Task<IHttpActionResult> GetSupplier(int id) {
             Supplier supplier = await db.Suppliers.FindAsync(id);
             if (supplier == null) {
                 return NotFound();
@@ -49,32 +47,24 @@ namespace NorthwindWeb.Api
 
         // PUT: api/Suppliers/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutSupplier(int id, Supplier supplier)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PutSupplier(int id, Supplier supplier){
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            if (id != supplier.SupplierID)
-            {
+            if (id != supplier.SupplierID) {
                 return BadRequest();
             }
 
             db.Entry(supplier).State = EntityState.Modified;
 
-            try
-            {
+            try {
                 await db.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SupplierExists(id))
-                {
+            catch (DbUpdateConcurrencyException) {
+                if (!SupplierExists(id)) {
                     return NotFound();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
@@ -84,10 +74,8 @@ namespace NorthwindWeb.Api
 
         // POST: api/Suppliers
         [ResponseType(typeof(Supplier))]
-        public async Task<IHttpActionResult> PostSupplier(Supplier supplier)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PostSupplier(Supplier supplier) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
@@ -99,11 +87,9 @@ namespace NorthwindWeb.Api
 
         // DELETE: api/Suppliers/5
         [ResponseType(typeof(Supplier))]
-        public async Task<IHttpActionResult> DeleteSupplier(int id)
-        {
+        public async Task<IHttpActionResult> DeleteSupplier(int id) {
             Supplier supplier = await db.Suppliers.FindAsync(id);
-            if (supplier == null)
-            {
+            if (supplier == null) {
                 return NotFound();
             }
 
@@ -113,18 +99,15 @@ namespace NorthwindWeb.Api
             return Ok(supplier);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
                 db.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool SupplierExists(int id)
-        {
-            return db.Suppliers.Count(e => e.SupplierID == id) > 0;
+        private bool SupplierExists(int id) {
+            return db.Suppliers.Any(e => e.SupplierID == id);
         }
     }
 }

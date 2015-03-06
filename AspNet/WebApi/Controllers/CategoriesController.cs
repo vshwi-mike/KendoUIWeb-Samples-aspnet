@@ -27,8 +27,7 @@ namespace NorthwindWeb.Api
 
 
         // GET: api/Categories
-        public IEnumerable<CategoryDTO> GetCategories()
-        {
+        public IEnumerable<CategoryDTO> GetCategories() {
             var query = db.Categories
                             .OrderBy(i => i.CategoryID);
             var list = Mapper.Map<List<Category>, List<CategoryDTO>>(query.ToList());
@@ -37,8 +36,7 @@ namespace NorthwindWeb.Api
 
         // GET: api/Categories/5
         [ResponseType(typeof(CategoryDTO))]
-        public async Task<IHttpActionResult> GetCategory(int id)
-        {
+        public async Task<IHttpActionResult> GetCategory(int id) {
             Category category = await db.Categories.FindAsync(id);
             if (category == null) {
                 return NotFound();
@@ -50,8 +48,7 @@ namespace NorthwindWeb.Api
 
         // PUT: api/Categories/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutCategory(int id, Category category)
-        {
+        public async Task<IHttpActionResult> PutCategory(int id, Category category) {
             if (!ModelState.IsValid){
                 return BadRequest(ModelState);
             }
@@ -64,8 +61,7 @@ namespace NorthwindWeb.Api
 
             try {
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException) {
+            } catch (DbUpdateConcurrencyException) {
                 if (!CategoryExists(id)) {
                     return NotFound();
                 } else {
@@ -78,8 +74,7 @@ namespace NorthwindWeb.Api
 
         // POST: api/Categories
         [ResponseType(typeof(CategoryDTO))]
-        public async Task<IHttpActionResult> PostCategory(Category category)
-        {
+        public async Task<IHttpActionResult> PostCategory(Category category) {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
@@ -91,8 +86,7 @@ namespace NorthwindWeb.Api
 
         // DELETE: api/Categories/5
         [ResponseType(typeof(CategoryDTO))]
-        public async Task<IHttpActionResult> DeleteCategory(int id)
-        {
+        public async Task<IHttpActionResult> DeleteCategory(int id) {
             Category category = await db.Categories.FindAsync(id);
             if (category == null) {
                 return NotFound();
@@ -105,18 +99,15 @@ namespace NorthwindWeb.Api
             return Ok(dto);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing){
+            if (disposing) {
                 db.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool CategoryExists(int id)
-        {
-            return db.Categories.Count(e => e.CategoryID == id) > 0;
+        private bool CategoryExists(int id) {
+            return db.Categories.Any(e => e.CategoryID == id);
         }
     }
 }

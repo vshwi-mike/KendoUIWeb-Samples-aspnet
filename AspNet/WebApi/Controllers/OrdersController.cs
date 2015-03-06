@@ -29,8 +29,7 @@ namespace NorthwindWeb.Api
         }
 
         // GET: api/Orders
-        public IEnumerable<OrderDTO> GetOrders()
-        {
+        public IEnumerable<OrderDTO> GetOrders(){
             var query = db.Orders
                             .Include("Customer")
                             .Include("Employee")
@@ -41,8 +40,7 @@ namespace NorthwindWeb.Api
 
         // GET: api/Orders/5
         [ResponseType(typeof(OrderDTO))]
-        public async Task<IHttpActionResult> GetOrder(int id)
-        {
+        public async Task<IHttpActionResult> GetOrder(int id){
             Order order = await db.Orders
                         .Include("Customer")
                         .Include("Employee")
@@ -57,32 +55,23 @@ namespace NorthwindWeb.Api
 
         // PUT: api/Orders/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutOrder(int id, Order order)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PutOrder(int id, Order order) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            if (id != order.OrderID)
-            {
+            if (id != order.OrderID) {
                 return BadRequest();
             }
 
             db.Entry(order).State = EntityState.Modified;
 
-            try
-            {
+            try {
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OrderExists(id))
-                {
+            } catch (DbUpdateConcurrencyException) {
+                if (!OrderExists(id)) {
                     return NotFound();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
@@ -92,10 +81,8 @@ namespace NorthwindWeb.Api
 
         // POST: api/Orders
         [ResponseType(typeof(Order))]
-        public async Task<IHttpActionResult> PostOrder(Order order)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PostOrder(Order order) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
@@ -107,11 +94,9 @@ namespace NorthwindWeb.Api
 
         // DELETE: api/Orders/5
         [ResponseType(typeof(Order))]
-        public async Task<IHttpActionResult> DeleteOrder(int id)
-        {
+        public async Task<IHttpActionResult> DeleteOrder(int id) {
             Order order = await db.Orders.FindAsync(id);
-            if (order == null)
-            {
+            if (order == null) {
                 return NotFound();
             }
 
@@ -121,18 +106,15 @@ namespace NorthwindWeb.Api
             return Ok(order);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
                 db.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool OrderExists(int id)
-        {
-            return db.Orders.Count(e => e.OrderID == id) > 0;
+        private bool OrderExists(int id) {
+            return db.Orders.Any(e => e.OrderID == id);
         }
     }
 }

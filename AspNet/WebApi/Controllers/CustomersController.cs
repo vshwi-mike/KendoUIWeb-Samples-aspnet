@@ -25,8 +25,7 @@ namespace NorthwindWeb.Api
         }
 
         // GET: api/Customers
-        public IEnumerable<CustomerDTO> GetCustomers()
-        {
+        public IEnumerable<CustomerDTO> GetCustomers() {
             var query = db.Customers
                             .OrderBy(i => i.CustomerID);
             var list = Mapper.Map<List<Customer>, List<CustomerDTO>>(query.ToList());
@@ -35,8 +34,7 @@ namespace NorthwindWeb.Api
 
         // GET: api/Customers/5
         [ResponseType(typeof(CustomerDTO))]
-        public async Task<IHttpActionResult> GetCustomer(string id)
-        {
+        public async Task<IHttpActionResult> GetCustomer(string id) {
             Customer customer = await db.Customers.FindAsync(id);
             if (customer == null) {
                 return NotFound();
@@ -47,32 +45,23 @@ namespace NorthwindWeb.Api
 
         // PUT: api/Customers/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutCustomer(string id, Customer customer)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PutCustomer(string id, Customer customer) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            if (id != customer.CustomerID)
-            {
+            if (id != customer.CustomerID) {
                 return BadRequest();
             }
 
             db.Entry(customer).State = EntityState.Modified;
 
-            try
-            {
+            try {
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CustomerExists(id))
-                {
+            } catch (DbUpdateConcurrencyException) {
+                if (!CustomerExists(id)) {
                     return NotFound();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
@@ -82,27 +71,19 @@ namespace NorthwindWeb.Api
 
         // POST: api/Customers
         [ResponseType(typeof(Customer))]
-        public async Task<IHttpActionResult> PostCustomer(Customer customer)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PostCustomer(Customer customer) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
             db.Customers.Add(customer);
 
-            try
-            {
+            try {
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (CustomerExists(customer.CustomerID))
-                {
+            } catch (DbUpdateException) {
+                if (CustomerExists(customer.CustomerID)) {
                     return Conflict();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
@@ -112,11 +93,9 @@ namespace NorthwindWeb.Api
 
         // DELETE: api/Customers/5
         [ResponseType(typeof(Customer))]
-        public async Task<IHttpActionResult> DeleteCustomer(string id)
-        {
+        public async Task<IHttpActionResult> DeleteCustomer(string id) {
             Customer customer = await db.Customers.FindAsync(id);
-            if (customer == null)
-            {
+            if (customer == null) {
                 return NotFound();
             }
 
@@ -126,18 +105,15 @@ namespace NorthwindWeb.Api
             return Ok(customer);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
                 db.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool CustomerExists(string id)
-        {
-            return db.Customers.Count(e => e.CustomerID == id) > 0;
+        private bool CustomerExists(string id) {
+            return db.Customers.Any(e => e.CustomerID == id);
         }
     }
 }

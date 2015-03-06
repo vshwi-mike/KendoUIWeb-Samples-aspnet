@@ -82,30 +82,22 @@ namespace NorthwindWeb.Api
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutProduct(int id, Product product)
         {
-            if (!ModelState.IsValid)
-            {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            if (id != product.ProductID)
-            {
+            if (id != product.ProductID) {
                 return BadRequest();
             }
 
             db.Entry(product).State = EntityState.Modified;
 
-            try
-            {
+            try {
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductExists(id))
-                {
+            } catch (DbUpdateConcurrencyException) {
+                if (!ProductExists(id)) {
                     return NotFound();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
@@ -115,10 +107,8 @@ namespace NorthwindWeb.Api
 
         // POST: api/Products
         [ResponseType(typeof(Product))]
-        public async Task<IHttpActionResult> PostProduct(Product product)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PostProduct(Product product) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
@@ -130,11 +120,9 @@ namespace NorthwindWeb.Api
 
         // DELETE: api/Products/5
         [ResponseType(typeof(Product))]
-        public async Task<IHttpActionResult> DeleteProduct(int id)
-        {
+        public async Task<IHttpActionResult> DeleteProduct(int id) {
             Product product = await db.Products.FindAsync(id);
-            if (product == null)
-            {
+            if (product == null) {
                 return NotFound();
             }
 
@@ -144,18 +132,15 @@ namespace NorthwindWeb.Api
             return Ok(product);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
                 db.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool ProductExists(int id)
-        {
-            return db.Products.Count(e => e.ProductID == id) > 0;
+        private bool ProductExists(int id) {
+            return db.Products.Any(e => e.ProductID == id);
         }
     }
 }

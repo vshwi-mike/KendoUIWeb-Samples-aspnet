@@ -25,8 +25,7 @@ namespace NorthwindWeb.Api
         }
 
         // GET: api/Regions
-        public IEnumerable<RegionDTO> GetRegions()
-        {
+        public IEnumerable<RegionDTO> GetRegions(){
             var query = db.Regions
                             .OrderBy(i => i.RegionID);
             var list = Mapper.Map<List<Region>, List<RegionDTO>>(query.ToList());
@@ -35,8 +34,7 @@ namespace NorthwindWeb.Api
 
         // GET: api/Regions/5
         [ResponseType(typeof(RegionDTO))]
-        public async Task<IHttpActionResult> GetRegion(int id)
-        {
+        public async Task<IHttpActionResult> GetRegion(int id){
             Region region = await db.Regions.FindAsync(id);
             if (region == null) {
                 return NotFound();
@@ -48,32 +46,23 @@ namespace NorthwindWeb.Api
 
         // PUT: api/Regions/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutRegion(int id, Region region)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PutRegion(int id, Region region){
+            if (!ModelState.IsValid){
                 return BadRequest(ModelState);
             }
 
-            if (id != region.RegionID)
-            {
+            if (id != region.RegionID){
                 return BadRequest();
             }
 
             db.Entry(region).State = EntityState.Modified;
 
-            try
-            {
+            try {
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RegionExists(id))
-                {
+            } catch (DbUpdateConcurrencyException) {
+                if (!RegionExists(id)) {
                     return NotFound();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
@@ -83,27 +72,19 @@ namespace NorthwindWeb.Api
 
         // POST: api/Regions
         [ResponseType(typeof(Region))]
-        public async Task<IHttpActionResult> PostRegion(Region region)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PostRegion(Region region) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
             db.Regions.Add(region);
 
-            try
-            {
+            try {
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (RegionExists(region.RegionID))
-                {
+            } catch (DbUpdateException) {
+                if (RegionExists(region.RegionID)) {
                     return Conflict();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
@@ -113,11 +94,9 @@ namespace NorthwindWeb.Api
 
         // DELETE: api/Regions/5
         [ResponseType(typeof(Region))]
-        public async Task<IHttpActionResult> DeleteRegion(int id)
-        {
+        public async Task<IHttpActionResult> DeleteRegion(int id) {
             Region region = await db.Regions.FindAsync(id);
-            if (region == null)
-            {
+            if (region == null) {
                 return NotFound();
             }
 
@@ -127,18 +106,15 @@ namespace NorthwindWeb.Api
             return Ok(region);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
                 db.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool RegionExists(int id)
-        {
-            return db.Regions.Count(e => e.RegionID == id) > 0;
+        private bool RegionExists(int id) {
+            return db.Regions.Any(e => e.RegionID == id);
         }
     }
 }

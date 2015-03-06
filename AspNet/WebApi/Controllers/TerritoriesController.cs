@@ -28,8 +28,7 @@ namespace NorthwindWeb.Api
         }
 
         // GET: api/Territories
-        public IEnumerable<TerritoryDTO> GetTerritories(int RegionID = 0)
-        {
+        public IEnumerable<TerritoryDTO> GetTerritories(int RegionID = 0) {
             var query = db.Territories
                             .Include("Region")
                             .AsQueryable();
@@ -45,8 +44,7 @@ namespace NorthwindWeb.Api
 
         // GET: api/Territories/5
         [ResponseType(typeof(TerritoryDTO))]
-        public async Task<IHttpActionResult> GetTerritory(string id)
-        {
+        public async Task<IHttpActionResult> GetTerritory(string id) {
             Territory territory = await db.Territories
                                     .Include("Region")
                                     .SingleOrDefaultAsync(i => i.TerritoryID == id);
@@ -61,32 +59,23 @@ namespace NorthwindWeb.Api
 
         // PUT: api/Territories/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutTerritory(string id, Territory territory)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PutTerritory(string id, Territory territory) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            if (id != territory.TerritoryID)
-            {
+            if (id != territory.TerritoryID) {
                 return BadRequest();
             }
 
             db.Entry(territory).State = EntityState.Modified;
 
-            try
-            {
+            try {
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TerritoryExists(id))
-                {
+            } catch (DbUpdateConcurrencyException) {
+                if (!TerritoryExists(id)) {
                     return NotFound();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
@@ -96,27 +85,19 @@ namespace NorthwindWeb.Api
 
         // POST: api/Territories
         [ResponseType(typeof(Territory))]
-        public async Task<IHttpActionResult> PostTerritory(Territory territory)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PostTerritory(Territory territory) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
             db.Territories.Add(territory);
 
-            try
-            {
+            try {
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (TerritoryExists(territory.TerritoryID))
-                {
+            } catch (DbUpdateException) {
+                if (TerritoryExists(territory.TerritoryID)) {
                     return Conflict();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
@@ -126,11 +107,9 @@ namespace NorthwindWeb.Api
 
         // DELETE: api/Territories/5
         [ResponseType(typeof(Territory))]
-        public async Task<IHttpActionResult> DeleteTerritory(string id)
-        {
+        public async Task<IHttpActionResult> DeleteTerritory(string id) {
             Territory territory = await db.Territories.FindAsync(id);
-            if (territory == null)
-            {
+            if (territory == null) {
                 return NotFound();
             }
 
@@ -140,18 +119,15 @@ namespace NorthwindWeb.Api
             return Ok(territory);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
                 db.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool TerritoryExists(string id)
-        {
-            return db.Territories.Count(e => e.TerritoryID == id) > 0;
+        private bool TerritoryExists(string id) {
+            return db.Territories.Any(e => e.TerritoryID == id);
         }
     }
 }

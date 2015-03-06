@@ -25,8 +25,7 @@ namespace NorthwindWeb.Api
         }
 
         // GET: api/Employees
-        public IEnumerable<EmployeeDTO> GetEmployees(int RegionID = 0, string TerritoryID = "")
-        {
+        public IEnumerable<EmployeeDTO> GetEmployees(int RegionID = 0, string TerritoryID = ""){
             var query = db.Employees
                             .Include("Territories")
                             .AsQueryable();
@@ -46,8 +45,7 @@ namespace NorthwindWeb.Api
 
         // GET: api/Employees/5
         [ResponseType(typeof(EmployeeDTO))]
-        public async Task<IHttpActionResult> GetEmployee(int id)
-        {
+        public async Task<IHttpActionResult> GetEmployee(int id){
             Employee employee = await db.Employees.FindAsync(id);
             if (employee == null) {
                 return NotFound();
@@ -61,30 +59,22 @@ namespace NorthwindWeb.Api
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutEmployee(int id, Employee employee)
         {
-            if (!ModelState.IsValid)
-            {
+            if (!ModelState.IsValid){
                 return BadRequest(ModelState);
             }
 
-            if (id != employee.EmployeeID)
-            {
+            if (id != employee.EmployeeID){
                 return BadRequest();
             }
 
             db.Entry(employee).State = EntityState.Modified;
 
-            try
-            {
+            try {
                 await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EmployeeExists(id))
-                {
+            } catch (DbUpdateConcurrencyException) {
+                if (!EmployeeExists(id)) {
                     return NotFound();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
@@ -94,10 +84,8 @@ namespace NorthwindWeb.Api
 
         // POST: api/Employees
         [ResponseType(typeof(Employee))]
-        public async Task<IHttpActionResult> PostEmployee(Employee employee)
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IHttpActionResult> PostEmployee(Employee employee) {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
@@ -109,11 +97,9 @@ namespace NorthwindWeb.Api
 
         // DELETE: api/Employees/5
         [ResponseType(typeof(Employee))]
-        public async Task<IHttpActionResult> DeleteEmployee(int id)
-        {
+        public async Task<IHttpActionResult> DeleteEmployee(int id) {
             Employee employee = await db.Employees.FindAsync(id);
-            if (employee == null)
-            {
+            if (employee == null) {
                 return NotFound();
             }
 
@@ -123,18 +109,15 @@ namespace NorthwindWeb.Api
             return Ok(employee);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
                 db.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool EmployeeExists(int id)
-        {
-            return db.Employees.Count(e => e.EmployeeID == id) > 0;
+        private bool EmployeeExists(int id) {
+            return db.Employees.Any(e => e.EmployeeID == id);
         }
     }
 }
