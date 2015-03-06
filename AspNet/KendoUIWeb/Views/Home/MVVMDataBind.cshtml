@@ -59,9 +59,8 @@
         <button class="btn btn-primary" data-bind="events: {click: onShowJSON}">Show JSON</button>
     </div>
 
-    <div class="well">
-        <a href="http://docs.telerik.com/kendo-ui/framework/mvvm/overview" target="_blank">Kendo UI site...</a>
-    </div>
+    @Html.Partial("_SourceCode", 
+        new { javascript = "mvvm_databind", html = "MVVMDataBind", link = "framework/mvvm/overview" })
 </div>
 
 

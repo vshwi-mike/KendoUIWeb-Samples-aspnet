@@ -73,7 +73,7 @@ namespace KendoUIWeb.Controllers {
         }
 
         /// <summary>
-        /// ページネーション
+        /// ページネーション(Client-side)
         /// </summary>
         /// <returns></returns>
         public ActionResult Grid3() {
@@ -81,10 +81,18 @@ namespace KendoUIWeb.Controllers {
         }
 
         /// <summary>
+        /// ページネーション(Server-side)
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Grid4() {
+            return View();
+        }
+
+        /// <summary>
         /// テンプレートを使う
         /// </summary>
         /// <returns></returns>
-        public ActionResult Grid4_1() {
+        public ActionResult Grid5_1() {
             return View();
         }
 
@@ -92,7 +100,7 @@ namespace KendoUIWeb.Controllers {
         /// 行単位でスタイルを変える
         /// </summary>
         /// <returns></returns>
-        public ActionResult Grid4_2() {
+        public ActionResult Grid5_2() {
             return View();
         }
 
@@ -100,7 +108,7 @@ namespace KendoUIWeb.Controllers {
         /// 列単位でスタイルを変える
         /// </summary>
         /// <returns></returns>
-        public ActionResult Grid4_3() {
+        public ActionResult Grid5_3() {
             return View();
         }
 
@@ -108,7 +116,7 @@ namespace KendoUIWeb.Controllers {
         /// セル単位でスタイルを変える
         /// </summary>
         /// <returns></returns>
-        public ActionResult Grid4_4() {
+        public ActionResult Grid5_4() {
             return View();
         }
 
@@ -116,7 +124,7 @@ namespace KendoUIWeb.Controllers {
         /// 動的に列を非表示にする
         /// </summary>
         /// <returns></returns>
-        public ActionResult Grid4_5() {
+        public ActionResult Grid5_5() {
             return View();
         }
 
@@ -124,7 +132,7 @@ namespace KendoUIWeb.Controllers {
         /// 行編集モード - レコードの削除
         /// </summary>
         /// <returns></returns>
-        public ActionResult Grid5_1_1() {
+        public ActionResult Grid6_1_1() {
             return View();
         }
 
@@ -132,7 +140,7 @@ namespace KendoUIWeb.Controllers {
         /// 行編集モード - コンボボックス
         /// </summary>
         /// <returns></returns>
-        public ActionResult Grid5_1_2() {
+        public ActionResult Grid6_1_2() {
             return View();
         }
 
@@ -140,7 +148,7 @@ namespace KendoUIWeb.Controllers {
         /// 行編集モード - 日付ピッカー
         /// </summary>
         /// <returns></returns>
-        public ActionResult Grid5_1_3() {
+        public ActionResult Grid6_1_3() {
             return View();
         }
 
@@ -148,7 +156,7 @@ namespace KendoUIWeb.Controllers {
         /// 行編集モード - チェックボックス
         /// </summary>
         /// <returns></returns>
-        public ActionResult Grid5_1_4() {
+        public ActionResult Grid6_1_4() {
             return View();
         }
 
@@ -156,7 +164,7 @@ namespace KendoUIWeb.Controllers {
         /// セル編集モード
         /// </summary>
         /// <returns></returns>
-        public ActionResult Grid5_2() {
+        public ActionResult Grid6_2() {
             return View();
         }
 
@@ -164,7 +172,7 @@ namespace KendoUIWeb.Controllers {
         /// グリッドに集計行を表示
         /// </summary>
         /// <returns></returns>
-        public ActionResult Grid6() {
+        public ActionResult Grid7() {
             return View();
         }
 
@@ -172,7 +180,7 @@ namespace KendoUIWeb.Controllers {
         /// グリッドの全行をループして一括処理
         /// </summary>
         /// <returns></returns>
-        public ActionResult Grid7() {
+        public ActionResult Grid8() {
             return View();
         }
 

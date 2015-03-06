@@ -30,20 +30,8 @@
         </div>
     </div>
 
-    <div class="well source-js">
-        <h4>Javascript</h4>
-        <iframe src="@Url.Action("AsText", "SourceFile", new { path="/Scripts/App/Samples/grid1.js" })"></iframe>
-    </div>
-
-    <div class="well source-html">
-        <h4>HTML</h4>
-        <iframe src="@Url.Action("AsText", "SourceFile", new { path = "/Views/Home/Grid1.cshtml" })"></iframe>
-    </div>
-
-    <div class="well kendolink">
-        <a href="//docs.telerik.com/kendo-ui/api/javascript/ui/grid" target="_blank">Kendo UI site...</a>
-    </div>
-
+    @Html.Partial("_SourceCode",
+        new { javascript = "grid1", html = "Grid1", link = "api/javascript/ui/grid" })
 </div>
 
 

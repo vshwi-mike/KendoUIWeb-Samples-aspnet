@@ -1,5 +1,5 @@
 ﻿@section scripts {
-    <script src="@Url.Content("~/Scripts/App/Samples/grid2.js")"></script>
+    <script src="@Url.Content("~/Scripts/App/Samples/grid3.js")"></script>
 }
 
 <style scoped>
@@ -18,7 +18,7 @@
 </style>
 
 <div id="app" >
-    <h2>検索条件で絞り込む</h2>
+    <h2>ページネーション (Client-side)</h2>
 
     <div class="row criteria">
         <div class="col-md-2">
@@ -64,14 +64,15 @@
 
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div id="grid"
                  data-role="grid"
                  data-selectable="row"
                  data-resizable="true"
                  data-sortable="true"
+                 data-pageable="true"
                  data-bind="source: productList"
-                 data-height="500"
+                 data-height="400"
                  data-columns="[
                     { field: 'CategoryName', title: 'Category', width: '120px'},
                     { field: 'ProductName', title: 'Product Name'},
@@ -82,7 +83,7 @@
     </div>
 
     @Html.Partial("_SourceCode",
-        new { javascript = "grid2", html = "Grid2", link = "api/javascript/ui/grid" })
+        new { javascript = "grid3", html = "Grid3", link = "api/javascript/ui/grid#configuration-pageable" })
 </div>
 
 
