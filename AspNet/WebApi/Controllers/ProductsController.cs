@@ -11,10 +11,10 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Http.Cors;
 using AutoMapper;
-using NorthwindWeb.Models;
-using NorthwindWeb.DTO;
+using WebApi.Models;
+using WebApi.DTO;
 
-namespace NorthwindWeb.Api
+namespace WebApi
 {
     public class ProductsController : ApiController
     {
@@ -35,7 +35,17 @@ namespace NorthwindWeb.Api
                                         int? category_id = null, 
                                         int? supplier_id = null, 
                                         string product_name = "", 
-                                        bool active_only = true ) {
+                                        bool active_only = true) {
+
+            var query = BuildProductListQuery(category_id, supplier_id, product_name, active_only);
+            return query.ToList();
+        }
+
+        private IQueryable<ProductDTO> BuildProductListQuery(
+                                        int? category_id = null,
+                                        int? supplier_id = null,
+                                        string product_name = "",
+                                        bool active_only = true) {
             var query = db.Products
                             .Include("Category")
                             .Include("Supplier")
@@ -58,8 +68,49 @@ namespace NorthwindWeb.Api
             }
 
             query = query.OrderBy(i => i.ProductID);
-            var list = Mapper.Map<List<Product>, List<ProductDTO>>(query.ToList());
-            return list;
+
+            var query2 = query.Select(i => 
+                new ProductDTO { 
+                    ProductID = i.ProductID ,
+                    ProductName = i.ProductName,
+                    SupplierID = i.SupplierID,
+                    CategoryID = i.CategoryID,
+                    QuantityPerUnit = i.QuantityPerUnit,
+                    UnitPrice = i.UnitPrice,
+                    UnitsInStock = i.UnitsInStock,
+                    UnitsOnOrder = i.UnitsOnOrder,
+                    ReorderLevel = i.ReorderLevel,
+                    Discontinued = i.Discontinued,
+                    CategoryName = i.Category != null ? i.Category.CategoryName : "",
+                    SupplierName = i.Supplier != null ? i.Supplier.CompanyName : ""
+                });
+            return query2;
+        }
+
+        /// <summary>
+        /// Product一覧のページネーション対応版
+        /// 
+        /// 引数の他にQuery文字列に下記のパラメータが必要。(kendo UI Gridが自動的に付加する。)
+        ///     int page        - the page of data item to return (1 means the first page)
+        ///     int pageSize    - the number of items to return
+        ///     int skip        - how many data items to skip
+        ///     int take        - the number of data items to return (the same as pageSize)
+        /// </summary>
+        /// <param name="category_id"></param>
+        /// <param name="supplier_id"></param>
+        /// <param name="product_name"></param>
+        /// <param name="active_only"></param>
+        /// <returns></returns>
+        [Route("api/ProductsPaged")]
+        public PagedList<ProductDTO> GetProductsPaged(
+                                        int? category_id = null,
+                                        int? supplier_id = null,
+                                        string product_name = "",
+                                        bool active_only = true) {
+
+            var query = BuildProductListQuery(category_id, supplier_id, product_name, active_only);
+            var pagedList = new PagedList<ProductDTO>(Request, query);
+            return pagedList;
         }
 
         // GET: api/Products/5

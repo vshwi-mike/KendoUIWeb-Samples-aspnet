@@ -5,14 +5,14 @@ namespace WebApi.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<NorthwindWeb.Models.NorthwindDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<WebApi.Models.NorthwindDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(NorthwindWeb.Models.NorthwindDbContext context)
+        protected override void Seed(WebApi.Models.NorthwindDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

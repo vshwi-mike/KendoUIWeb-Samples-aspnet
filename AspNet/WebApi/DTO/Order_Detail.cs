@@ -1,4 +1,4 @@
-namespace NorthwindWeb.DTO
+namespace WebApi.DTO
 {
     using System;
     using System.Collections.Generic;

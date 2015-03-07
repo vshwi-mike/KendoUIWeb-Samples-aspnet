@@ -1,4 +1,4 @@
-namespace NorthwindWeb.DTO
+namespace WebApi.DTO
 {
     using System;
     using System.Collections.Generic;
@@ -43,4 +43,5 @@ namespace NorthwindWeb.DTO
 
         //public SupplierDTO Supplier { get; set; }
     }
+
 }

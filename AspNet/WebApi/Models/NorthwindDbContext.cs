@@ -1,4 +1,4 @@
-namespace NorthwindWeb.Models {
+namespace WebApi.Models {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;

@@ -112,6 +112,7 @@
     <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\OrderDTO.cs" />
     <Compile Include="DTO\Order_Detail.cs" />
+    <Compile Include="DTO\PagedList.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="DTO\RegionDTO.cs" />
     <Compile Include="DTO\ShipperDTO.cs" />

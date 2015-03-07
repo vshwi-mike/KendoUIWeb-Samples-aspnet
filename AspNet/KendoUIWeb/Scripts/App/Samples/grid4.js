@@ -21,15 +21,17 @@
         productList: new kendo.data.DataSource({
             transport: {
                 read: {
-                    url: "http://localhost:50194/api/products",
+                    url: "http://localhost:50194/api/ProductsPaged",
                     dataType: "json",
                     data: function () {
-                        return vm.get("criteria").toJSON();;
+                        return vm.get("criteria").toJSON();
                     }
                 }
             },
             schema: {
-                model: { id: "ProductID" }
+                model: { id: "ProductID" },
+                data: "list",
+                total: "total"
             },
             serverPaging: true,
             pageSize: 10

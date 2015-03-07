@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AutoMapper;
-using NorthwindWeb.Models;
-using NorthwindWeb.DTO;
+using WebApi.Models;
+using WebApi.DTO;
 
-namespace NorthwindWeb.Api
+namespace WebApi
 {
     public class OrdersController : ApiController
     {
