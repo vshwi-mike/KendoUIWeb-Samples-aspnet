@@ -1,5 +1,5 @@
 ﻿@section scripts {
-    <script src="@Url.Content("~/Scripts/App/Samples/grid4.js")"></script>
+    <script src="@Url.Content("~/Scripts/App/Samples/grid5_1.js")"></script>
 }
 
 <style scoped>
@@ -15,10 +15,33 @@
         padding-top: 1.8em;
     }
 
+    .numeric {
+        text-align:right;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    /* 行・列の間隔を狭くする*/ 
+    #grid tbody tr td[role=gridcell] {
+        padding: 1px;
+    }
+
+    /* 2列目だけ背景色を変える */
+    #grid tbody tr td[role=gridcell]:nth-child(2) {
+        background-color: cyan;
+    }
+
+    /* 商品名を太字にする */
+    .productname {
+        font-weight: bold;
+    }
+
 </style>
 
 <div id="app" >
-    <h2>ページネーション (Server-side)</h2>
+    <h2>グリッドのカスタマイズ - Column Templateを使う</h2>
 
     <div class="row criteria">
         <div class="col-md-2">
@@ -64,7 +87,7 @@
 
 
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div id="grid"
                  data-role="grid"
                  data-selectable="row"
@@ -75,15 +98,32 @@
                  data-height="400"
                  data-columns="[
                     { field: 'CategoryName', title: 'Category', width: '120px'},
-                    { field: 'ProductName', title: 'Product Name'},
-                    { field: 'SupplierName', title: 'Supplier', width: '300px'}
+                    { field: 'ProductName', title: 'Product Name', template: kendo.template($('#tpl_prod_name').html()) },
+                    { field: 'SupplierName', title: 'Supplier', width: '300px'},
+                    { field: 'UnitPrice', title: 'Unit Price', width: '80px', template: kendo.template($('#tpl_unit_price').html()) },
+                    { field: 'Discontinued', title: 'Discon', width: '70px', template: kendo.template($('#tpl_discon').html()) }
                  ]"
                 ></div>
+
+            <script id="tpl_prod_name" type="text/k-kendo-tmpl">
+                <div class="productname">#= ProductName #</div>
+            </script>
+
+            <script id="tpl_unit_price" type="text/k-kendo-tmpl">
+                <div class="numeric">#= kendo.toString(UnitPrice, '\#,0.00') #</div>
+            </script>
+
+            <script id="tpl_discon" type="text/k-kendo-tmpl">
+                <div class="center">
+                    <input type="checkbox" data-bind="checked:Discontinued" readonly disabled>
+                </div>
+            </script>
+
         </div>
     </div>
 
     @Html.Partial("_SourceCode",
-        new { javascript = "grid4", html = "Grid4", link = "api/javascript/data/datasource#configuration-serverPaging" })
+                new { javascript = "grid5_1", html = "Grid5_1", link = "api/javascript/ui/grid#configuration-columns.template" })
 </div>
 
 

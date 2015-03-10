@@ -89,7 +89,7 @@ namespace KendoUIWeb.Controllers {
         }
 
         /// <summary>
-        /// テンプレートを使う
+        /// Column Templateを使う
         /// </summary>
         /// <returns></returns>
         public ActionResult Grid5_1() {
@@ -97,7 +97,7 @@ namespace KendoUIWeb.Controllers {
         }
 
         /// <summary>
-        /// 行単位でスタイルを変える
+        /// Row Templateを使う
         /// </summary>
         /// <returns></returns>
         public ActionResult Grid5_2() {
@@ -105,7 +105,7 @@ namespace KendoUIWeb.Controllers {
         }
 
         /// <summary>
-        /// 列単位でスタイルを変える
+        /// 行単位でスタイルを変える
         /// </summary>
         /// <returns></returns>
         public ActionResult Grid5_3() {
@@ -113,7 +113,7 @@ namespace KendoUIWeb.Controllers {
         }
 
         /// <summary>
-        /// セル単位でスタイルを変える
+        /// 列単位でスタイルを変える
         /// </summary>
         /// <returns></returns>
         public ActionResult Grid5_4() {
@@ -121,10 +121,18 @@ namespace KendoUIWeb.Controllers {
         }
 
         /// <summary>
-        /// 動的に列を非表示にする
+        /// セル単位でスタイルを変える
         /// </summary>
         /// <returns></returns>
         public ActionResult Grid5_5() {
+            return View();
+        }
+
+        /// <summary>
+        /// 動的に列を非表示にする
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Grid5_6() {
             return View();
         }
 

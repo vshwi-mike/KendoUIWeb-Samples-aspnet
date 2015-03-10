@@ -173,6 +173,7 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\App\Samples\combobox2_3.js" />
     <Content Include="Scripts\App\Samples\combobox3.js" />
+    <Content Include="Scripts\App\Samples\grid5_1.js" />
     <Content Include="Scripts\App\Samples\grid4.js" />
     <Content Include="Scripts\App\Samples\grid3.js" />
     <Content Include="Scripts\App\Samples\grid2.js" />
@@ -218,6 +219,7 @@
     <Content Include="Views\Home\Grid3.cshtml" />
     <Content Include="Views\Home\_SourceCode.cshtml" />
     <Content Include="Views\Home\Grid4.cshtml" />
+    <Content Include="Views\Home\Grid5_1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\App\Models\" />

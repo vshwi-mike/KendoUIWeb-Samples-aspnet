@@ -34,10 +34,15 @@
                     { text: "3.2. 検索条件で絞り込む", url: "@Url.Action("Grid2")" },
                     { text: "3.3. ページネーション(Client-side)", url: "@Url.Action("Grid3")" },
                     { text: "3.4. ページネーション(Server-side)", url: "@Url.Action("Grid4")" },
-                    { text: "3.5. グリッドのカスタマイズ" }
+                    {
+                        text: "3.5. グリッドのカスタマイズ", items: [
+                                    { text: "3.5.1. Column Templateを使う", url: "@Url.Action("Grid5_1")" },
+                                    { text: "3.5.2. Row Templateを使う", url: "@Url.Action("Grid5_2")" }
+                        ]
+                    },
                 ]
             }
-    ],
+        ],
 
         expandAll: function (e) {
             var treeview = e.sender;
