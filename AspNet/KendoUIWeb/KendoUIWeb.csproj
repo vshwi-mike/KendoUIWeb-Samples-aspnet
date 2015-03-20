@@ -122,42 +122,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Bootstrap\editor.png" />
-    <Content Include="Content\Bootstrap\imagebrowser.png" />
-    <Content Include="Content\Bootstrap\indeterminate.gif" />
-    <Content Include="Content\Bootstrap\loading-image.gif" />
-    <Content Include="Content\Bootstrap\loading.gif" />
-    <Content Include="Content\Bootstrap\loading_2x.gif" />
-    <Content Include="Content\Bootstrap\markers.png" />
-    <Content Include="Content\Bootstrap\markers_2x.png" />
-    <Content Include="Content\Bootstrap\slider-h.gif" />
-    <Content Include="Content\Bootstrap\slider-v.gif" />
-    <Content Include="Content\Bootstrap\sprite.png" />
-    <Content Include="Content\Bootstrap\sprite_2x.png" />
-    <Content Include="Content\Bootstrap\sprite_kpi.png" />
-    <Content Include="Content\Bootstrap\sprite_kpi_2x.png" />
-    <Content Include="Content\Default\editor.png" />
-    <Content Include="Content\Default\imagebrowser.png" />
-    <Content Include="Content\Default\indeterminate.gif" />
-    <Content Include="Content\Default\loading-image.gif" />
-    <Content Include="Content\Default\loading.gif" />
-    <Content Include="Content\Default\loading_2x.gif" />
-    <Content Include="Content\Default\markers.png" />
-    <Content Include="Content\Default\markers_2x.png" />
-    <Content Include="Content\Default\slider-h.gif" />
-    <Content Include="Content\Default\slider-v.gif" />
-    <Content Include="Content\Default\sprite.png" />
-    <Content Include="Content\Default\sprite_2x.png" />
-    <Content Include="Content\Default\sprite_kpi.png" />
-    <Content Include="Content\Default\sprite_kpi_2x.png" />
-    <Content Include="Content\images\back.png" />
-    <Content Include="Content\images\kendoui.svg" />
-    <Content Include="Content\images\wp8_icons.png" />
-    <Content Include="Content\images\wp8_inverseicons.png" />
-    <Content Include="Content\kendo.bootstrap.min.css" />
-    <Content Include="Content\kendo.bootstrap.mobile.min.css" />
-    <Content Include="Content\kendo.common.min.css" />
-    <Content Include="Content\kendo.default.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -168,8 +132,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\images\kendoui.ttf" />
-    <Content Include="Content\images\kendoui.woff" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\App\Samples\combobox2_3.js" />
     <Content Include="Scripts\App\Samples\combobox3.js" />
@@ -185,9 +147,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <None Include="Scripts\kendo.all-vsdoc.js" />
-    <Content Include="Scripts\kendo.all.min.js" />
-    <Content Include="Scripts\kendo.culture.ja-JP.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
@@ -224,6 +183,7 @@
     <Content Include="Views\Home\Grid5_2.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\images\" />
     <Folder Include="Scripts\App\Models\" />
     <Folder Include="Views\SourceFile\" />
   </ItemGroup>

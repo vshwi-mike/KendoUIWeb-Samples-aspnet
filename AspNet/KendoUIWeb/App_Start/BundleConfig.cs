@@ -8,10 +8,7 @@ namespace KendoUIWeb {
 
             //スタイルシート
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/kendo.common.min.css",
-                      "~/Content/kendo.default.min.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap.css"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -28,10 +25,6 @@ namespace KendoUIWeb {
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
-                      "~/Scripts/kendo.all.min.js",
-                      "~/Scripts/kendo.culture.ja-JP.min.js"));
 
         }
     }

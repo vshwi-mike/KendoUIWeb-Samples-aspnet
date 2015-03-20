@@ -104,29 +104,6 @@ namespace KendoUIWeb.Controllers {
             return View();
         }
 
-        /// <summary>
-        /// 行単位でスタイルを変える
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Grid5_3() {
-            return View();
-        }
-
-        /// <summary>
-        /// 列単位でスタイルを変える
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Grid5_4() {
-            return View();
-        }
-
-        /// <summary>
-        /// セル単位でスタイルを変える
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Grid5_5() {
-            return View();
-        }
 
         /// <summary>
         /// 動的に列を非表示にする

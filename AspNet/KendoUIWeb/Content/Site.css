@@ -36,6 +36,20 @@ textarea {
     float: left;
 }
 
+header.navbar.navbar-inverse.navbar-fixed-top {
+    background-color: purple;
+    border-bottom: 6px solid #ccc;
+}
+
+footer.page-footer {
+    background-color: purple;
+    height:60px;
+    padding-top: 20px;
+    color: #ccc;
+    text-align: center;
+    border-top: 6px solid #ccc;
+}
+
 .body-content {
     max-width:1000px;
 }
