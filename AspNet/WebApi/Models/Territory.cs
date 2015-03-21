@@ -13,6 +13,7 @@ namespace WebApi.Models
             Employees = new HashSet<Employee>();
         }
 
+        [Key, Required]
         [StringLength(20)]
         public string TerritoryID { get; set; }
 

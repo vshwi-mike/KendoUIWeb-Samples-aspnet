@@ -9,6 +9,7 @@ namespace WebApi.DTO
     public class RegionDTO
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int RegionID { get; set; }
 
         [Required]

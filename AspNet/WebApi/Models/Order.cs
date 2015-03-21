@@ -13,6 +13,8 @@ namespace WebApi.Models
             Order_Details = new HashSet<Order_Detail>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int OrderID { get; set; }
 
         [StringLength(5)]

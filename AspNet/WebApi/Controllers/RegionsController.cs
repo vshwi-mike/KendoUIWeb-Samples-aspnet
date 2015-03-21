@@ -20,7 +20,8 @@ namespace WebApi
         private NorthwindDbContext db = new NorthwindDbContext();
 
         public RegionsController() {
-            Mapper.CreateMap<Region, RegionDTO>();
+            Mapper.CreateMap<Region, RegionDTO>()
+                .ForMember( m => m.RegionDescription, opt => opt.MapFrom( src => src.RegionDescription.TrimEnd()));
             Mapper.AssertConfigurationIsValid();
         }
 
@@ -75,6 +76,11 @@ namespace WebApi
         public async Task<IHttpActionResult> PostRegion(Region region) {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
+            }
+
+            if (region.RegionID == 0) {
+                //既存IDの最大値+1を取得。
+                region.RegionID = db.Regions.Max(i => i.RegionID) + 1;
             }
 
             db.Regions.Add(region);

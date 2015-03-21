@@ -8,6 +8,7 @@ namespace WebApi.DTO
 
     public class CustomerDTO
     {
+        [Key, Required]
         [StringLength(5)]
         public string CustomerID { get; set; }
 

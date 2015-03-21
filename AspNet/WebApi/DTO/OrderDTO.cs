@@ -8,6 +8,8 @@ namespace WebApi.DTO
 
     public partial class OrderDTO
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int OrderID { get; set; }
 
         [StringLength(5)]

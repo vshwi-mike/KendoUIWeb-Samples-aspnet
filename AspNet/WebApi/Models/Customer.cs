@@ -14,6 +14,7 @@ namespace WebApi.Models
             CustomerDemographics = new HashSet<CustomerDemographic>();
         }
 
+        [Key, Required]
         [StringLength(5)]
         public string CustomerID { get; set; }
 

@@ -8,6 +8,9 @@ namespace WebApi.DTO
 
     public partial class EmployeeDTO
     {
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int EmployeeID { get; set; }
 
         [Required]

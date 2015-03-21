@@ -8,6 +8,8 @@ namespace WebApi.DTO
 
     public class CategoryDTO
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int CategoryID { get; set; }
 
         [Required]

@@ -15,6 +15,7 @@ namespace WebApi.Models
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int RegionID { get; set; }
 
         [Required]

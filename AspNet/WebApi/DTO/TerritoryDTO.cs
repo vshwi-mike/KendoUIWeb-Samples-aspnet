@@ -8,6 +8,7 @@ namespace WebApi.DTO
 
     public class TerritoryDTO
     {
+        [Key, Required]
         [StringLength(20)]
         public string TerritoryID { get; set; }
 

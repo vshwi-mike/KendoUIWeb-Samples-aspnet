@@ -13,6 +13,8 @@ namespace WebApi.Models
             Products = new HashSet<Product>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int SupplierID { get; set; }
 
         [Required]

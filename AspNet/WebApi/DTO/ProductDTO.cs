@@ -8,6 +8,8 @@ namespace WebApi.DTO
 
     public class ProductDTO
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int ProductID { get; set; }
 
         [Required]

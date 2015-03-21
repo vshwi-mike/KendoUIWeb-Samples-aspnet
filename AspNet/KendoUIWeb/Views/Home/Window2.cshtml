@@ -1,0 +1,48 @@
+﻿@section scripts {
+    <script src="@Url.Content("~/Scripts/App/Samples/window2_dialog.js")"></script>
+    <script src="@Url.Content("~/Scripts/App/Samples/window2.js")"></script>
+}
+
+<style scoped>
+    h2 {
+        margin-bottom: 40px;
+    }
+
+</style>
+
+<div id="app" >
+    <h2>ダイアログウィンドウ - データをサーバーから取得して表示</h2>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div id="grid"
+                 data-role="grid"
+                 data-selectable="row"
+                 data-resizable="true"
+                 data-sortable="true"
+                 data-bind="source: regionList"
+                 data-height="300"
+                 data-columns="[
+                    { field: 'RegionID', title: 'Region ID', width: '80px'},
+                    { field: 'RegionDescription', title: 'Description'},
+                    { field: 'RegionID', title: ' ', width: 60, template: kendo.template($('#tpl_edit_template').html())}
+                 ]"
+                ></div>
+            <script id="tpl_edit_template" type="text/k-kendo-tmpl">
+                <a class="btn btn-sm btn-default grid_edit_button" 
+                   data-bind="click: onEdit"><span class="k-icon k-edit"></span></a>
+            </script>
+        </div>
+    </div>
+
+</div>
+
+@Html.Partial("Window2_Dialog")
+
+
+@Html.Partial("_SourceCode", new { javascript = "window2", html = "", link = "" })
+@Html.Partial("_SourceCode", new { javascript = "window2_dialog", html = "Window2", link = "" })
+@Html.Partial("_SourceCode", new { javascript = "", html = "Window2_Dialog", link = "api/javascript/ui/window" })
+
+
+

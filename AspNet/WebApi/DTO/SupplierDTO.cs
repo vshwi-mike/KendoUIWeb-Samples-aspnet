@@ -8,6 +8,8 @@ namespace WebApi.DTO
 
     public class SupplierDTO
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int SupplierID { get; set; }
 
         [Required]

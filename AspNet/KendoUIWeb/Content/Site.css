@@ -5,8 +5,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -17,11 +17,28 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
+}*/
+
+form {
+    margin: 0;
 }
+
+.form-horizontal .form-group {
+    margin:4px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.form-horizontal .form-control {
+    border: 1px solid #888;
+}
+.form-horizontal .form-control.input-sm {
+    padding:4px;
+}
+
 
 
 /*****************************************************/

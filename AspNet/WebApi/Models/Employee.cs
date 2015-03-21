@@ -15,6 +15,8 @@ namespace WebApi.Models
             Territories = new HashSet<Territory>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int EmployeeID { get; set; }
 
         [Required]

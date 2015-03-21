@@ -4,17 +4,22 @@
     string link = "//docs.telerik.com/kendo-ui/" + Model.link;
 }
 
-<div class="well source-js">
-    <h4>Javascript (@(js))</h4>
-    <iframe src="@Url.Action("AsText", "SourceFile", new { path = "/Scripts/App/Samples/" + js })"></iframe>
-</div>
+@if (!string.IsNullOrEmpty(Model.javascript)) {
+    <div class="well source-js">
+        <h4>Javascript (@(js))</h4>
+        <iframe src="@Url.Action("AsText", "SourceFile", new { path = "/Scripts/App/Samples/" + js })"></iframe>
+    </div>
+}
 
-<div class="well source-html">
-    <h4>HTML (@(html))</h4>
-    <iframe src="@Url.Action("AsText", "SourceFile", new { path = "/Views/Home/" + html })"></iframe>
-</div>
+@if (!string.IsNullOrEmpty(Model.html)) {
+    <div class="well source-html">
+        <h4>HTML (@(html))</h4>
+        <iframe src="@Url.Action("AsText", "SourceFile", new { path = "/Views/Home/" + html })"></iframe>
+    </div>
+}
 
-<div class="well kendolink">
-    <a href="@(link)" target="_blank">Kendo UI site...</a>
-</div>
-
+@if (!string.IsNullOrEmpty(Model.link)) {
+    <div class="well kendolink">
+        <a href="@(link)" target="_blank">Kendo UI site...</a>
+    </div>
+}
