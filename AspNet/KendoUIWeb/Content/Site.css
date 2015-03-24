@@ -39,6 +39,17 @@ form {
     padding:4px;
 }
 
+.k-tooltip.k-tooltip-validation.k-invalid-msg,
+.k-tooltip.k-tooltip-validation.k-invalid-msg.field-validation-error {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    width: 240px;
+    font-weight:bold;
+    color:red;
+    opacity: 0.85;
+}
+
 
 
 /*****************************************************/

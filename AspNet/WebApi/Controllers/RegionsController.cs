@@ -99,17 +99,20 @@ namespace WebApi
         }
 
         // DELETE: api/Regions/5
-        [ResponseType(typeof(Region))]
+        [HttpPost]
+        [Route("api/Regions/DeleteRegion/{id}")]
         public async Task<IHttpActionResult> DeleteRegion(int id) {
             Region region = await db.Regions.FindAsync(id);
             if (region == null) {
                 return NotFound();
             }
-
-            db.Regions.Remove(region);
-            await db.SaveChangesAsync();
-
-            return Ok(region);
+            try {
+                db.Regions.Remove(region);
+                await db.SaveChangesAsync();
+                return Ok(new { status = "ok" });
+            } catch (Exception ex) {
+                return Ok(new { status = "ng", message = ex.Message });
+            }
         }
 
         protected override void Dispose(bool disposing) {

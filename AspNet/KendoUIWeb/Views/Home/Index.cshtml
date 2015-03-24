@@ -44,14 +44,17 @@
             },
             {
                 text: "4. ダイアログウィンドウ", items: [
-                        { 
+                        {
                             text: "4.1. グリッドの選択行を詳細ダイアログに表示", items: [
-                                { text: "4.1.1. 選択行のデータをそのまま表示", url: "@Url.Action("Window1")" },
-                                { text: "4.1.2. データをサーバーから取得して表示", url: "@Url.Action("Window2")" },
+                                { text: "4.1.1. 選択行のデータをそのまま表示", url: "@Url.Action("Window1_1")" },
+                                { text: "4.1.2. データをサーバーから取得して表示", url: "@Url.Action("Window1_2")" },
                             ]
+                        },
+                        {
+                            text: "4.2. 詳細ダイアログでのデータ編集", url: "@Url.Action("Window2")" 
                         }
                     ]
-                    
+
             }
         ],
 

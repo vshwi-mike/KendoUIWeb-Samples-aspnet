@@ -1,6 +1,6 @@
 ﻿@section scripts {
-    <script src="@Url.Content("~/Scripts/App/Samples/window2_dialog.js")"></script>
-    <script src="@Url.Content("~/Scripts/App/Samples/window2.js")"></script>
+    <script src="@Url.Content("~/Scripts/App/Samples/window1_1_dialog.js")"></script>
+    <script src="@Url.Content("~/Scripts/App/Samples/window1_1.js")"></script>
 }
 
 <style scoped>
@@ -11,7 +11,7 @@
 </style>
 
 <div id="app" >
-    <h2>ダイアログウィンドウ - 詳細ダイアログでのデータ編集</h2>
+    <h2>ダイアログウィンドウ - 選択行のデータをそのまま表示</h2>
 
     <div class="row">
         <div class="col-md-8">
@@ -20,7 +20,6 @@
                  data-selectable="row"
                  data-resizable="true"
                  data-sortable="true"
-                 data-toolbar="[{name:'create', text:'Create New'}, {name:'copy', text:'Copy'}, {name:'destroy', text:'Delete' }, {name: 'refresh', text:'Refresh'}]"
                  data-bind="source: regionList"
                  data-height="300"
                  data-columns="[
@@ -38,12 +37,12 @@
 
 </div>
 
-@Html.Partial("Window2_Dialog")
+@Html.Partial("Window1_1_Dialog")
 
 
-@Html.Partial("_SourceCode", new { javascript = "window2", html = "", link = "" })
-@Html.Partial("_SourceCode", new { javascript = "window2_dialog", html = "Window2", link = "" })
-@Html.Partial("_SourceCode", new { javascript = "", html = "Window2_Dialog", link = "api/javascript/ui/window" })
+@Html.Partial("_SourceCode", new { javascript = "window1_1", html = "", link = "" })
+@Html.Partial("_SourceCode", new { javascript = "window1_1_dialog", html = "Window1_1", link = "" })
+@Html.Partial("_SourceCode", new { javascript = "", html = "Window1_1_Dialog", link = "api/javascript/ui/window" })
 
 
 

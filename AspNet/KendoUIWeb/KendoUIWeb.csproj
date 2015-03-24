@@ -136,7 +136,8 @@
     <Content Include="Scripts\App\Samples\combobox2_3.js" />
     <Content Include="Scripts\App\Samples\combobox3.js" />
     <Content Include="Scripts\App\Samples\window2.js" />
-    <Content Include="Scripts\App\Samples\window1.js" />
+    <Content Include="Scripts\App\Samples\window1_2.js" />
+    <Content Include="Scripts\App\Samples\window1_1.js" />
     <Content Include="Scripts\App\Samples\grid5_2.js" />
     <Content Include="Scripts\App\Samples\grid5_1.js" />
     <Content Include="Scripts\App\Samples\grid4.js" />
@@ -146,7 +147,8 @@
     <Content Include="Scripts\App\Samples\mvvm_databind.js" />
     <Content Include="Scripts\App\Samples\combobox1.js" />
     <Content Include="Scripts\App\Samples\window2_dialog.js" />
-    <Content Include="Scripts\App\Samples\window1_dialog.js" />
+    <Content Include="Scripts\App\Samples\window1_2_dialog.js" />
+    <Content Include="Scripts\App\Samples\window1_1_dialog.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -185,9 +187,11 @@
     <Content Include="Views\Home\Grid4.cshtml" />
     <Content Include="Views\Home\Grid5_1.cshtml" />
     <Content Include="Views\Home\Grid5_2.cshtml" />
-    <Content Include="Views\Home\Window1.cshtml" />
+    <Content Include="Views\Home\Window1_1.cshtml" />
+    <Content Include="Views\Home\Window1_2.cshtml" />
+    <Content Include="Views\Home\Window1_1_Dialog.cshtml" />
+    <Content Include="Views\Home\Window1_2_Dialog.cshtml" />
     <Content Include="Views\Home\Window2.cshtml" />
-    <Content Include="Views\Home\Window1_Dialog.cshtml" />
     <Content Include="Views\Home\Window2_Dialog.cshtml" />
   </ItemGroup>
   <ItemGroup>

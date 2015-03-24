@@ -178,15 +178,23 @@ namespace KendoUIWeb.Controllers {
         }
 
         /// <summary>
-        /// ダイアログウィンドウの表示 - 1. 親画面のHTMLに埋め込んでおく
+        /// ダイアログウィンドウの表示 - 選択行のデータをそのまま表示
         /// </summary>
         /// <returns></returns>
-        public ActionResult Window1() {
+        public ActionResult Window1_1() {
             return View();
         }
 
         /// <summary>
-        /// ダイアログウィンドウの表示 - 2. 動的にHTMLを取得する
+        /// ダイアログウィンドウの表示 - データをサーバーから取得して表示
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Window1_2() {
+            return View();
+        }
+
+        /// <summary>
+        /// ダイアログウィンドウの表示 - 詳細ダイアログでのデータ編集
         /// </summary>
         /// <returns></returns>
         public ActionResult Window2() {
@@ -194,13 +202,8 @@ namespace KendoUIWeb.Controllers {
         }
 
 
-//###4.3. グリッドの選択行を詳細ダイアログに表示
-//####4.3.1. グリッドのデータをそのまま表示
-//####4.3.2. データをサーバーから取得して表示
-
-//###4.4. 詳細ダイアログでのデータ編集
-//###4.5. 詳細ダイアログでタブを使う
-//###4.6. 詳細ダイアログ内にグリッドを表示
+//###4.3. タブパネルを使う
+//###4.4. 詳細ダイアログ内にグリッドを表示
 
 //##5. リストビュー
 //###5.1. リストビューを使う
