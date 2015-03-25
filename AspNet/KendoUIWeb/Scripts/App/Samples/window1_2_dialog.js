@@ -33,7 +33,7 @@
 
         onClose: function (e) {
             if (e) e.preventDefault();
-            $(e.target).closest("[data-role='window']").data("kendoWindow").close();
+            $(vm.element).data("kendoWindow").close();
         }
     });
 

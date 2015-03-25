@@ -67,15 +67,15 @@
             var region_id = item.get("RegionID");
             if (confirm("Are you sure to delete '" + region_id + "'?")) {
                 $.ajax({
-                    url: "http://localhost:50194/api/regions/DeleteRegion/" + id,
+                    url: "http://localhost:50194/api/regions/DeleteRegion/" + region_id,
                     type: "POST"
                 }).done(function (result) {
-                    if (result.status !== "ok") {
-                        alert(result.message);
-                        return;
-                    }
                     alert("The region '" + region_id + "' has been deleted.");
                     vm.refreshList();
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    var s = jqXHR.status + ": " + errorThrown;
+                    s += jqXHR.responseText && "\n\n" + jqXHR.responseText;
+                    alert(s);
                 });
             }
         }

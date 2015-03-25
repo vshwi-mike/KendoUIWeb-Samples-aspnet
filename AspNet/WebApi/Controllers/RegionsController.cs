@@ -56,19 +56,18 @@ namespace WebApi
                 return BadRequest();
             }
 
-            db.Entry(region).State = EntityState.Modified;
-
             try {
-                await db.SaveChangesAsync();
-            } catch (DbUpdateConcurrencyException) {
                 if (!RegionExists(id)) {
                     return NotFound();
-                } else {
-                    throw;
                 }
+                db.Entry(region).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+
+            } catch (Exception ex) {
+                throw ex;
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok();
         }
 
         // POST: api/Regions
@@ -106,13 +105,9 @@ namespace WebApi
             if (region == null) {
                 return NotFound();
             }
-            try {
-                db.Regions.Remove(region);
-                await db.SaveChangesAsync();
-                return Ok(new { status = "ok" });
-            } catch (Exception ex) {
-                return Ok(new { status = "ng", message = ex.Message });
-            }
+            db.Regions.Remove(region);
+            await db.SaveChangesAsync();
+            return Ok();
         }
 
         protected override void Dispose(bool disposing) {

@@ -26,7 +26,7 @@
                     var model = kendo.observable(result);
 
                     if (isCopy) {
-                        model.set("RegionID", null);
+                        model.set("RegionID", 0);
                         model.set("isNew", true);
                     } else {
                         model.set("isNew", false);
@@ -35,7 +35,7 @@
                 });
             } else {
                 var model = kendo.observable({
-                    RegionID: null,
+                    RegionID: 0,
                     RegionDescription: "",
                     isNew: true
                 });
@@ -45,15 +45,30 @@
 
         onSave: function (e) {
             if (e) e.preventDefault();
-            var model = vm.get("model").toJSON();
-            alert("Data:\n" + JSON.stringify(model) + "\n\nActual saving process is not implemented...");
-            vm.onClose(e);
-            vm.trigger("saved", { data: model } );        //savedイベントを発生して親画面に通知。
+            var model = vm.get("model");
+            var data_str = JSON.stringify(model);
+
+            $.ajax({
+                url: "http://localhost:50194/api/regions/" + (!model.isNew && model.RegionID),
+                type: model.isNew ? "POST" : "PUT",
+                data: data_str,
+                processData: false,
+                contentType: "application/json; charset=utf-8"
+            }).done(function (result) {
+                alert("Data saved successfully.");
+                vm.trigger("saved", { data: model });        //savedイベントを発生して親画面に通知。
+                vm.onClose();
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                var s = jqXHR.status + ": " + errorThrown;
+                s += jqXHR.responseText && "\n\n" + jqXHR.responseText;
+                alert(s);
+            });
+            
         },
 
         onClose: function (e) {
             if (e) e.preventDefault();
-            $(e.target).closest("[data-role='window']").data("kendoWindow").close();
+            $(vm.element).data("kendoWindow").close();
         }
     });
 

@@ -21,17 +21,23 @@
             .buttons .btn-close {
                 margin-left: 40px;
             }
+
+        .note {
+            font-style: italic;
+            color: #888;
+        }
     </style>
 
     <form id="editForm" class="form-horizontal" data-role="validator">
         <div class="form-group">
             <label for="txtRegionID" class="col-sm-2 control-label required">Region ID</label>
-            <div class="col-sm-2">
+            <div class="col-sm-8">
                 <input id="txtRegionID" name="Region ID" type="text"
                        data-bind="value: model.RegionID, enabled: model.isNew"
                        maxlength="5" required
                        class="form-control input-sm k-textbox"
                        style="width:100px;" />
+                <span class="note" data-bind="visible: model.isNew">(0の場合は自動採番します)</span>
             </div>
         </div>
 
