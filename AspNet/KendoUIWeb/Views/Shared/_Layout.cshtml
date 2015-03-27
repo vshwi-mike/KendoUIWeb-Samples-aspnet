@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Configuration
+@{
+    string ApiUrl = WebConfigurationManager.AppSettings["URL_API"];
+    string WebUrl = WebConfigurationManager.AppSettings["URL_WEB"];
+       
+}<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -44,6 +49,15 @@
     </footer>
 
     <script src="//cdn.kendostatic.com/2014.3.1411/js/kendo.all.min.js"></script>
+    <script>
+        var App = App || {};
+        App.apiUrl = "@(ApiUrl)";
+        App.url = "@(WebUrl)";
+
+        App.getApiUrl = function (path) {
+            return App.apiUrl + path;
+        };
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -14,7 +14,7 @@
             win.center().open();
 
             $.ajax({
-                url: "http://localhost:50194/api/regions/" + id,
+                url: App.getApiUrl("regions/" + id),
                 type: "GET",
                 cache: false
             }).done(function (result) {

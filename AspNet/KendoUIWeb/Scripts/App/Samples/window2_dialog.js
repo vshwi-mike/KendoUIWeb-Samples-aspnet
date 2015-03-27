@@ -18,7 +18,7 @@
 
             if (id) {
                 $.ajax({
-                    url: "http://localhost:50194/api/regions/" + id,
+                    url: App.getApiUrl("regions/" + id),
                     type: "GET",
                     cache: false
                 }).done(function (result) {
@@ -49,7 +49,7 @@
             var data_str = JSON.stringify(model);
 
             $.ajax({
-                url: "http://localhost:50194/api/regions/" + (!model.isNew && model.RegionID),
+                url: App.getApiUrl("regions/" + (!model.isNew && model.RegionID)),
                 type: model.isNew ? "POST" : "PUT",
                 data: data_str,
                 processData: false,

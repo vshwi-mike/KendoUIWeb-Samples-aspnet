@@ -12,7 +12,7 @@
         regionList: new kendo.data.DataSource({
             transport: {
                 read: {
-                    url: "http://localhost:50194/api/regions",
+                    url: App.getApiUrl("regions"),
                     dataType: "json"
                 }
             },
@@ -24,7 +24,7 @@
         territoryList: new kendo.data.DataSource({
             transport: {
                 read: {
-                    url: "http://localhost:50194/api/territories",
+                    url: App.getApiUrl("territories"),
                     dataType: "json",
                     data: function () {
                         return { RegionID: $(vm.element).find("#drp_region").val() };
@@ -40,7 +40,7 @@
         employeeList: new kendo.data.DataSource({
             transport: {
                 read: {
-                    url: "http://localhost:50194/api/employees",
+                    url: App.getApiUrl("employees"),
                     dataType: "json",
                     data: function () {
                         return {

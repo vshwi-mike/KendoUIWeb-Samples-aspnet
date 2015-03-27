@@ -10,7 +10,7 @@
         regionList: new kendo.data.DataSource({
             transport: {
                 read: {
-                    url: "http://localhost:50194/api/regions",
+                    url: App.getApiUrl("regions"),
                     dataType: "json"
                 }
             },

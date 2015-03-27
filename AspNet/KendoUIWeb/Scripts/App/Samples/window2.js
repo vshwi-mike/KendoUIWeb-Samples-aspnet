@@ -10,7 +10,7 @@
         regionList: new kendo.data.DataSource({
             transport: {
                 read: {
-                    url: "http://localhost:50194/api/regions",
+                    url: App.getApiUrl("regions"),
                     dataType: "json"
                 }
             },
@@ -67,7 +67,7 @@
             var region_id = item.get("RegionID");
             if (confirm("Are you sure to delete '" + region_id + "'?")) {
                 $.ajax({
-                    url: "http://localhost:50194/api/regions/DeleteRegion/" + region_id,
+                    url: App.getApiUrl("regions/DeleteRegion/" + region_id),
                     type: "POST"
                 }).done(function (result) {
                     alert("The region '" + region_id + "' has been deleted.");

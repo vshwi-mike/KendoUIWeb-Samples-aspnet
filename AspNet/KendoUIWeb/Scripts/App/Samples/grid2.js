@@ -12,7 +12,7 @@
         categoryList : new kendo.data.DataSource({
             transport: {
                 read: {
-                    url: "http://localhost:50194/api/categories",
+                    url: App.getApiUrl("categories"),
                     dataType: "json"
                 }
             }
@@ -21,7 +21,7 @@
         productList: new kendo.data.DataSource({
             transport: {
                 read: {
-                    url: "http://localhost:50194/api/products",
+                    url: App.getApiUrl("products"),
                     dataType: "json",
                     data: function () {
                         return vm.get("criteria").toJSON();;

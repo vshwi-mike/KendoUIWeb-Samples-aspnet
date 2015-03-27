@@ -10,7 +10,7 @@
         dataSource: new kendo.data.DataSource({
             transport: {
                 read: {
-                    url: "http://localhost:50194/api/customers",
+                    url: App.getApiUrl("customers"),
                     dataType: "json"
                 }
             },
