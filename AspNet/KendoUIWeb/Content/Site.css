@@ -70,6 +70,7 @@ header.navbar.navbar-inverse.navbar-fixed-top {
 }
 
 footer.page-footer {
+    margin-top: 60px;
     background-color: purple;
     height:60px;
     padding-top: 20px;

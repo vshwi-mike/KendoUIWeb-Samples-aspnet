@@ -1,6 +1,8 @@
 ﻿var App = App || {};
 
 (function () {
+    'use strict';
+
     var vm;
     App.ViewModel = vm= new kendo.data.ObservableObject({
         element: "#app",
