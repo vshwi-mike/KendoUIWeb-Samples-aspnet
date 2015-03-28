@@ -70,14 +70,20 @@
                     url: App.getApiUrl("regions/DeleteRegion/" + region_id),
                     type: "POST"
                 }).done(function (result) {
-                    alert("The region '" + region_id + "' has been deleted.");
+                    vm.showNotification("The region '" + region_id + "' has been deleted.", "success");
                     vm.refreshList();
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     var s = jqXHR.status + ": " + errorThrown;
                     s += jqXHR.responseText && "\n\n" + jqXHR.responseText;
-                    alert(s);
+                    vm.showNotification(s, "error");
                 });
             }
+        },
+
+        showNotification: function (msg, type) {
+            type = type || "info";
+            var n = $(vm.element).find("#notification").data("kendoNotification");
+            n.show(msg, type);
         }
     });
 

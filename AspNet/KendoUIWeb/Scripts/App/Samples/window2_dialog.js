@@ -48,6 +48,11 @@
             var model = vm.get("model");
             var data_str = JSON.stringify(model);
 
+            var validator = $("#editForm").data("kendoValidator");
+            if (!validator.validate()) {
+                return;
+            }
+
             $.ajax({
                 url: App.getApiUrl("regions/" + (!model.isNew && model.RegionID)),
                 type: model.isNew ? "POST" : "PUT",
@@ -55,20 +60,25 @@
                 processData: false,
                 contentType: "application/json; charset=utf-8"
             }).done(function (result) {
-                alert("Data saved successfully.");
+                vm.showNotification("Data saved successfully.", "success");
                 vm.trigger("saved", { data: model });        //savedイベントを発生して親画面に通知。
                 vm.onClose();
             }).fail(function (jqXHR, textStatus, errorThrown) {
                 var s = jqXHR.status + ": " + errorThrown;
                 s += jqXHR.responseText && "\n\n" + jqXHR.responseText;
-                alert(s);
+                vm.showNotification(s, "error");
             });
-            
         },
 
         onClose: function (e) {
             if (e) e.preventDefault();
             $(vm.element).data("kendoWindow").close();
+        },
+
+        showNotification: function (msg, type) {
+            type = type || "info";
+            var n = $(vm.element).find("#notification").data("kendoNotification");
+            n.show(msg, type);
         }
     });
 
