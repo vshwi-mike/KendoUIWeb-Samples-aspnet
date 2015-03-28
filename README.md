@@ -1,4 +1,4 @@
-#Kendo UI Web サンプル集 3/27/2015
+#Kendo UI Web サンプル集
 
 ##1. MVVM、データバインドを使う
 
