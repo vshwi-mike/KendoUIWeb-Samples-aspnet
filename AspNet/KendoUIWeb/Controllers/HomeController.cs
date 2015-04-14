@@ -201,6 +201,22 @@ namespace KendoUIWeb.Controllers {
             return View();
         }
 
+        /// <summary>
+        /// リストビュー(1)
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ListView1() {
+            return View();
+        }
+
+        /// <summary>
+        /// リストビュー(2)
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ListView2() {
+            return View();
+        }
+
 
 //###4.3. タブパネルを使う
 //###4.4. 詳細ダイアログ内にグリッドを表示
