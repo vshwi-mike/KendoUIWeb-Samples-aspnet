@@ -1,0 +1,138 @@
+﻿@section scripts {
+    <script src="@Url.Content("~/Scripts/App/Samples/listview2.js")"></script>
+}
+
+<style scoped>
+    h2 {
+        margin-bottom: 40px;
+    }
+
+    #products {
+        padding-left: 4px;
+    }
+
+    #products li {
+        display: inline-block;
+        float:left;
+        max-width: 200px;
+        height: 30px;
+        margin: 4px; 
+        padding: 3px;
+        border: 1px solid pink;
+        border-radius: 4px;
+    }
+
+    .product-name {
+        font-weight: bold;
+    }
+
+    .price {
+        font-style: italic;
+        text-align:right;
+        color: blue;
+    }
+
+    #cart {
+        padding-left: 4px;
+        border: none;
+    }
+    
+    #cart li {
+        display: block;
+        height: 40px;
+        margin: 4px; 
+        padding: 3px;
+        border: 1px solid pink;
+        border-radius: 4px;
+    }
+
+        #cart .cart-item .cart-item-cell {
+            display: inline-block;
+            float: left;
+            margin-left: 4px;
+        }
+
+        #cart .quantity {
+            font-weight: bold;
+        }
+
+        #cart .price {
+            font-weight: bold;
+            font-style: normal;
+            color: black;
+        }
+
+    .buttons {
+        padding: 8px;
+        text-align:center;
+    }
+</style>
+
+<div id="app" >
+    <h2>リストビューを使う(2)</h2>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <h4 style="float:left;">Products</h4> 
+                <h4 style="float: right; color: red;">CTRL+Click to select multiple items.</h4> 
+            </div>
+            <ul id="products"
+                 data-role="listview"
+                 data-bind="source: productList"
+                 data-template="tpl_product"
+                 data-selectable="multiple"
+                 style="width:100%; height:140px;overflow-y: scroll;"
+                 ></ul>
+            <script id="tpl_product" type="text/k-kendo-tmpl">
+                <li><span class="product-name">#:ProductName#</span> <span class="price">$#:UnitPrice#</span></li>
+            </script>
+        </div>
+
+        <div class="col-md-12 buttons clearfix" >
+            <button class="btn btn-default" data-bind="click: onAdd" >Add to cart</button>
+            <button class="btn btn-default pull-right" data-bind="click: onClearAll, invisible: cartIsEmpty">Clear All</button>
+        </div>
+
+        <div class="col-md-12">
+            <h4>Shopping Cart</h4>
+            <ul id="cart"
+                 data-role="listview"
+                 data-bind="source: cart"
+                 data-template="tpl_cart"
+                 data-selectable="false"
+                 style="width:100%; "
+                 ></ul>
+            <script id="tpl_cart" type="text/k-kendo-tmpl">
+                <li class="cart-item clearfix" >
+                    <div class="product-name cart-item-cell" style="width:300px;">#:ProductName#</div>
+                    <div class="cart-item-cell" style="width:80px;">Qty <span class="quantity" data-bind="text: quantity"></span></div>
+
+                    <div class="cart-item-cell" style="width:80px;">
+                        <button class="btn btn-sm btn-default" data-bind="click: onIncrement">+</button>
+                        <button class="btn btn-sm btn-default" data-bind="click: onDecrement">-</button>
+                    </div>
+
+                    <div class="cart-item-cell" style="margin-left:20px;">Unit Price</div>
+                    <div class="cart-item-cell price" style="width:60px;">$<span data-bind="text: getPrice"></span></div>
+                    <div class="cart-item-cell" style="margin-left:20px;">Amount</div>
+                    <div class="cart-item-cell price" style="width:60px;">$<span data-bind="text: getAmount"></span></div>
+
+                    <div class="cart-item-cell pull-right">
+                        <button class="btn btn-sm btn-default " data-bind="click: onRemove">Remove</button>
+                    </div>
+                </li>
+            </script>
+
+            <div data-bind="visible: cartIsEmpty">
+                Your shopping cart is empty... Please add something.
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@Html.Partial("_SourceCode", new { javascript = "listview2", html = "ListView2", link = "api/javascript/ui/listview" })
+
+
+
